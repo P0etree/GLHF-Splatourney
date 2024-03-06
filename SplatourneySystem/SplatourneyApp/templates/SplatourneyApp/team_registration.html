@@ -1,0 +1,526 @@
+
+{% extends 'Splatourneyapp/base.html' %}
+{% block title %} <h1> Team Registration </h1> {% endblock %}
+
+{% block content %}
+
+<link rel ="stylesheet" href="splatourney.css">
+  <body>
+    
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center width-300px padding-bottom-5px">
+      <div class="card">
+        <div class="card-body">
+
+          <form id="createTeam" method="POST" action="{% url 'team_register' %}"> {% csrf_token %}
+            
+            <h1>TEAM REGISTRATION</h1>
+            <label for="teamname" class="form-label">TEAM NAME</label>
+            <input type="text" class="form-control" id="teamname" placeholder="Enter Team Name">
+            
+            <h2>PLAYER 1</h2>
+            <div class="mb-3">
+              <label for="p1fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p1fname" name="p1fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p1lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p1lname" name="p1lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p1ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p1ign" name="p1ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p1rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p1rank" name="p1rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  
+                  <input type="checkbox" class="form-check-input" id="p1front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p1slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p1mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p1skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p1back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p1support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p1type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p1type">
+                  <label class="form-check-label" for="p1type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p1type">
+                  <label class="form-check-label" for="p1type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p1type">
+                <label class="form-check-label" for="p1type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- PLAYER 2 START -->
+            <h2 class="mt-5">PLAYER 2</h2>
+            <div class="mb-3">
+              <label for="p2fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p2fname" name="p2fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p2lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p2lname" name="p2lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p2ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p2ign" name="p2ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p2rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p2rank" name="p2rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p2front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p2slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p2mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p2skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p2back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p2support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p2type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p2type">
+                  <label class="form-check-label" for="p2type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p2type">
+                  <label class="form-check-label" for="p2type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p2type">
+                <label class="form-check-label" for="p2type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- PLAYER 3 START -->
+            <h2 class="mt-5">PLAYER 3</h2>
+            <div class="mb-3">
+              <label for="p3fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p3fname" name="p3fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p3lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p3lname" id="p3lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p3ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p3ign" name="p3ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p2rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p3rank" name="p3rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  
+                  <input type="checkbox" class="form-check-input" id="p3front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p3slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p3mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p3skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p3back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p3support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p3type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p3type">
+                  <label class="form-check-label" for="p3type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p3type">
+                  <label class="form-check-label" for="p3type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p3type">
+                <label class="form-check-label" for="p3type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- PLAYER 4 START -->
+            <h2 class="mt-5">PLAYER 4</h2>
+            <div class="mb-3">
+              <label for="p4fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p4fname" name="p4fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p4lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p4lname" name="p4lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p4ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p4ign" name="p4ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p4rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p4rank" name="p4rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  
+                  <input type="checkbox" class="form-check-input" id="p4front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p4slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p4mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p4skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p4back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p4support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p4type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p4type">
+                  <label class="form-check-label" for="p4type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p4type">
+                  <label class="form-check-label" for="p4type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p4type">
+                <label class="form-check-label" for="p4type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- PLAYER 5 START -->
+            <h2 class="mt-5">PLAYER 5</h2>
+            <div class="mb-3">
+              <label for="p5fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p5fname" name="p5fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p5lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p5lname" name="p5lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p5ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p5ign" name="p5ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p5rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p5rank" name="p5rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  
+                  <input type="checkbox" class="form-check-input" id="p5front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p5slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p5mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p5skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p5back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p5support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p5type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p5type">
+                  <label class="form-check-label" for="p5type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p5type">
+                  <label class="form-check-label" for="p5type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p5type">
+                <label class="form-check-label" for="p5type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- PLAYER 6 START -->
+            <h2 class="mt-5">PLAYER 6</h2>
+            <div class="mb-3">
+              <label for="p6fname" class="form-label">FIRST NAME</label>
+              <input type="text" class="form-control" id="p6fname" name="p6fname" placeholder="Enter First Name">
+            </div>
+            <div class="mb-3">
+              <label for="p6lname" class="form-label">LAST NAME</label>
+              <input type="text" class="form-control" id="p6lname" name="p6lname" placeholder="Enter Last Name">
+            </div>
+            <div class="mb-3">
+              <label for="p6ign" class="form-label">IGN</label>
+              <input type="text" class="form-control" id="p6ign" name="p6ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for = "p6rank" class="form-label">CURRENT SPLATOON RANK</label>
+              <select class="form-select" id="p6rank" name="p6rank">
+                <option selected>Select Rank</option>
+                <option value="1">C-</option>
+                <option value="2">C</option>
+                <option value="3">C+</option>
+                <option value="4">B-</option>
+                <option value="5">B</option>
+                <option value="6">B+</option>
+                <option value="7">A-</option>
+                <option value="8">A</option>
+                <option value="9">A+</option>
+                <option value="10">S</option>
+                <option value="11">S+</option>
+                <option value="12">X 0-500</option>
+                <option value="13">X 501-1000</option>
+                <option value="14">X 1001-1500</option>
+                <option value="15">X 1501-2000</option>
+                <option value="16">X 2001-2500</option>
+                <option value="17">X 2501-3000</option>
+              </select>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  
+                  <input type="checkbox" class="form-check-input" id="p6front-line" value="Front-line">
+                  <label class="form-check-label" for="front-line">Front-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p2slayer" style="margin-left:25px;" value="Slayer">
+                  <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p6mid-line" value="Mid-Line">
+                  <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p6skirmisher" style="margin-left:37px;" value="Skirmsher">
+                  <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                </div>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="checkbox" class="form-check-input" id="p6back-line" value="Back-line">
+                  <label class="form-check-label" for="back-line">Back-line</label>
+
+                  <input type="checkbox" class="form-check-input" id="p6support"style="margin-left:30px;" value="Support">
+                  <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                </div>
+              </div>
+
+              <div class="mb-3 justify-content-center" style="position:relative">
+                <label for = "p6type" class="form-label">PLAYER TYPE</label>
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cap" name="p6type">
+                  <label class="form-check-label" for="p6type">Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="cocap" name="p6type">
+                  <label class="form-check-label" for="p6type">Co-Captain</label>
+                </div>
+                
+                <div class="mb-3" style="margin-left: 50px;">
+                  <input type="radio" class="form-check-input" id="mem" name="p6type">
+                <label class="form-check-label" for="p6type">Member</label>
+                </div>
+                
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary justify-content-end">Submit</button>
+
+            
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </body>
+
+{% endblock %}
