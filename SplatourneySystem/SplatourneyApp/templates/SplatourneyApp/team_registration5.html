@@ -1,0 +1,189 @@
+{% extends 'SplatourneyApp/base.html' %}
+{% block title %} <h1> Team Registration </h1> {% endblock %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="SplatourneyApp/splatourney.css">
+</head>
+
+<body>
+  <style>
+        body{
+          background-color: transparent;
+        }
+        .card{
+          background-color: #D9D9D9;
+          width:800px;
+          padding-top: 60px;
+          padding-bottom: 40px;
+          padding-left: 40px;
+          padding-right: 40px;
+
+        }
+
+        .card-title{
+          text-decoration:solid;
+        }
+    
+        .form{
+          flex-direction: row;
+        }
+
+        .form-control{
+          border-radius: 10px;
+        }
+
+        .form-select{
+          border-radius: 10px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 50px;
+        }
+      
+        .btn-primary {
+          color: white;
+          background-color:#008CC6;
+          border: none;
+          border-radius: 10px;
+
+          
+        }
+
+    .contained {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box; /* Ensure padding is included in height calculation */
+    }
+    .btn-custom {
+        width: 400px;
+        height: 52px;
+        font-size: 1.2em;
+        margin: 10px;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 35px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;
+    }
+    .current {
+        background-color: #ef216c;
+    }
+    .others {
+        background-color: #008CC6;
+    }
+    p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 44px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;}
+  </style>
+
+<p>Choose Player to Register in Team</p>
+<div class="contained">
+    <a href="{% url 'team_registration1' %}" class="btn btn-custom others">Player 1</a>
+    <a href="{% url 'team_registration2' %}" class="btn btn-custom others">Player 2</a>
+    <a href="{% url 'team_registration3' %}" class="btn btn-custom others">Player 3</a>
+    <a href="{% url 'team_registration4' %}" class="btn btn-custom others">Player 4</a>
+    <a href="#" class="btn btn-custom current">Player 5</a>
+    <a href="{% url 'team_registration6' %}" class="btn btn-custom others">Player 6</a>
+</div>
+
+
+
+  <div class="has-bg-img">
+    <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
+      <div class="container">
+        <div class="card mx-auto">
+          <h5 class="card-title mx-auto">TEAM REGISTRATION</h5>
+          <h5 class="card-title mx-auto">Player #5</h5>
+            <div class="card-body">
+              <form class="form">
+                <div class="mb-3">
+                  <label for="p5fname" class="form-label">FIRST NAME</label>
+                  <input type="text" class="form-control" id="p5fname" placeholder="Enter First name">
+                </div>
+                <div class="mb-3">
+                  <label for="p5lname" class="form-label">LAST NAME</label>
+                  <input type="text" class="form-control" id="p5lname" placeholder="Enter Last name">
+                </div>
+                <div class="mb-3">
+                  <label for="p5ign" class="form-label">IGN</label>
+                  <input type="text" class="form-control" id="p5ign" placeholder="Enter in-game name">
+                </div>
+                <div class="mb-3">
+                  <label for="p5PlayerDiscordID" class="form-label"> Discord ID</label>
+                  <input type="text" class="form-control" id="p5PlayerDiscordIDInput" placeholder="Enter Discord ID">
+                </div>
+                <div class="mb-3">
+                  <label for="p5PlayerFriendCode" class="form-label">Friend Code</label>
+                  <input type="text" class="form-control" id="p5PlayerFriendCodeInput" placeholder="Enter Friend Code">
+                </div>
+                <div class="mb-3">
+                  <label for="p5rank" class="form-label">CURRENT SPLATOON 3 RANK</label>
+                <div class="mb-3">
+                  <select class="form-select">
+                    <option selected>Select Rank</option>
+                    <option value="1">C-</option>
+                    <option value="2">C</option>
+                    <option value="3">C+</option>
+                    <option value="1">B-</option>
+                    <option value="2">B</option>
+                    <option value="3">B+</option>
+                    <option value="1">A-</option>
+                    <option value="2">A</option>
+                    <option value="3">A+</option>
+                    <option value="1">S-</option>
+                    <option value="2">S+</option>
+                    <option value="3">X</option>
+                  </select>
+                </div>
+                </div>
+                  <div class="mb-3 justify-content-center" style="position:relative">
+                    <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                    <div class="mb-3" style="margin-left: 50px;">
+                      
+                      <input type="checkbox" class="form-check-input" id="p5front-line">
+                      <label class="form-check-label" for="front-line">Front-line</label>
+
+                      <input type="checkbox" class="form-check-input" id="p5slayer" style="margin-left:25px;">
+                      <label class="form-check-label" for="slayer" style="margin-left:50px">Slayer</label>
+                    </div>
+                    <div class="mb-3" style="margin-left: 50px;">
+                      <input type="checkbox" class="form-check-input" id="p5mid-line">
+                      <label class="form-check-label" for="mid-line"style="margin-left:1px">Mid-line</label>
+
+                      <input type="checkbox" class="form-check-input" id="p5skirmisher" style="margin-left:37px;">
+                      <label class="form-check-label" for="skirmisher"style="margin-left:60px">Skirmisher</label>
+                    </div>
+                    <div class="mb-3" style="margin-left: 50px;">
+                      <input type="checkbox" class="form-check-input" id="p5back-line">
+                      <label class="form-check-label" for="back-line">Back-line</label>
+
+                      <input type="checkbox" class="form-check-input" id="p5support"style="margin-left:30px;">
+                      <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary justify-content-right">REGISTER</button>
+              </form>
+            </div>
+          </div>      
+      </div>
+    </div>
+  </div>
+</body>
+  
+
+{% endblock %}

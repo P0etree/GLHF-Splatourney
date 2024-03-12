@@ -94,9 +94,32 @@ def team_registration(request):
         Team_ID = request.POST.get('Team_ID')
         Team_Name = request.POST.get('Team_Name')
     else:
-        return render(request, 'SplatourneyApp/team_registration.html')
+        return render(request, 'SplatourneyApp/team_registration0.html')
+    
+def team_registration1(request):
+    return render(request, 'SplatourneyApp/team_registration1.html')
 
+def team_registration2(request):
+    return render(request, 'SplatourneyApp/team_registration2.html')
+    
+
+def team_registration3(request):
+   return render(request, 'SplatourneyApp/team_registration3.html')
+    
+def team_registration4(request):
+    return render(request, 'SplatourneyApp/team_registration4.html')
+    
+
+def team_registration5(request):
+     return render(request, 'SplatourneyApp/team_registration5.html')
+
+
+def team_registration6(request):
+     return render(request, 'SplatourneyApp/team_registration6.html')
     
 def view_registrations(request):
     Player_objects = Player.objects.all()
     return render(request, 'SplatourneyApp/registrations.html', {'Player': Player_objects})
+
+def login_page(request):
+    return render(request, 'SplatourneyApp/login_page.html')
