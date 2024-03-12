@@ -20,13 +20,19 @@ from . import views
 
 urlpatterns = [
     #path('admin/', admin.site.urls),
-    path('', views.player_registration, name='player_registration'),
+    #path('', views.player_registration, name='player_registration'),
     path('register', views.register, name='register'),
     path('team_register', views.team_register, name='team_register'),
     path('player_registration/', views.player_registration, name='player_registration'),
     path('', views.tournament_details, name='tournament_details'),
     path('tournament_details/', views.tournament_details, name='tournament_details'),
     path('team_registration/', views.team_registration, name='team_registration'),
+    path('team_registration1/', views.team_registration1, name='team_registration1'),
+    path('team_registration2/', views.team_registration2, name='team_registration2'),
+    path('team_registration3/', views.team_registration3, name='team_registration3'),
+    path('team_registration4/', views.team_registration4, name='team_registration4'),
+    path('team_registration5/', views.team_registration5, name='team_registration5'),
+    path('team_registration6/', views.team_registration6, name='team_registration6'),
     path('registrations/', views.view_registrations, name='view_registrations'),
     path('registration_type/', views.registration_type, name='registration_type'),
 
