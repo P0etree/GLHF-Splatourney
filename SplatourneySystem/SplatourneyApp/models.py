@@ -28,8 +28,6 @@ class Team(models.Model):
 class Moderator(models.Model):
     moderator_username=models.CharField(max_length=20,primary_key=True)
     moderator_password=models.CharField
-    moderator_lname=models.CharField(max_length=20)
-    moderator_fname=models.CharField(max_length=20)
     objects = models.Manager()
 
     def getModeratorFullName(self):
@@ -82,6 +80,8 @@ class Player(models.Model):
     def getPlayerType(self):
         return self.player_type
     
-    
-    
+class PlayerRole(models.Model):
+    player_ID = models.ForeignKey(Player, on_delete=models.CASCADE)
+    player_role = models.CharField(max_length=20)
+    object = models.Manager()
 
