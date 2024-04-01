@@ -35,5 +35,11 @@ urlpatterns = [
     path('team_registration6/', views.team_registration6, name='team_registration6'),
     path('registrations/', views.view_registrations, name='view_registrations'),
     path('registration_type/', views.registration_type, name='registration_type'),
-
+    path('login_page/', views.login_page, name='login_page'),
+    path('create_tournament/', views.create_tournament, name='create_tournament'),
+    path('edit_tournament/', views.edit_tournament, name='edit_tournament'),
+    path('pairings/', views.pairings, name='pairings'),
+    path('declare_winner/', views.declare_winner, name='declare_winner'),
+    path('start_tournament/', views.start_tournament, name='start_tournament'),
+    path('create_bracketColumns', views.create_bracketColumns, name='create_bracketColumns')
 ]
