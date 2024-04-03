@@ -101,6 +101,9 @@ def view_registrations(request):
 def login_page(request):
     return render(request, 'SplatourneyApp/login_page.html')
 
+def login_moderator(request):
+    return render(request, 'SplatourneyApp/login_moderator.html')
+  
 def create_tournament(request):
     if request.method=="POST":
         tournament_title=request.POST.get("tournament_title")
