@@ -101,6 +101,57 @@ def view_registrations(request):
 def login_page(request):
     return render(request, 'SplatourneyApp/login_page.html')
 
-
 def login_moderator(request):
     return render(request, 'SplatourneyApp/login_moderator.html')
+  
+def create_tournament(request):
+    if request.method=="POST":
+        tournament_title=request.POST.get("tournament_title")
+        tournament_description=request.POST.get("tournament_description")
+        tournament_mode=request.POST.get("tournament_mode")
+        registration_status=request.POST.get("registration_status")
+        tournament_status=request.POST.get("tournament_status")
+        Tournament.objects.create(tournament_title=tournament_title, tournament_description=tournament_description, tournament_mode=tournament_mode, registration_status=registration_status, tournament_status=tournament_status)
+        return redirect('tournament details screen')
+    else:
+        return render('tournament details screen')
+
+def edit_tournament(request, pk):
+    if request.method=="POST":
+        tournament_title=request.POST.get("tournament_title")
+        tournament_description=request.POST.get("tournament_description")
+        tournament_mode=request.POST.get("tournament_mode")
+        registration_status=request.POST.get("registration_status")
+        tournament_status=request.POST.get("tournament_status")
+        Tournament.objects.filter(pk=pk).update(tournament_title=tournament_title, tournament_description=tournament_description, tournament_mode=tournament_mode, registration_status=registration_status, tournament_status=tournament_status)
+        return redirect()
+    else:
+        return render ()
+
+def pairings(request):
+    pairing_objects = Pairing.objects.all()
+    return render(request, '#', {'pairing': pairing_objects} )
+
+def declare_winner(request):
+    if request.method=='POST':
+        winner = 'winner'
+        Team.objects.filter(team_Name=winner).update(wins=+1)
+    return render ('pairings screen')
+
+def start_tournament(request):
+    #t = pk something something
+    Tournament.objects.filter(pk='t').update(registration_status='Closed', tournament_status='ongoing')
+
+def create_bracketColumns(request):
+    total_player_count = 'total_player_count'
+    needed_bracket_columns = total_player_count/8
+    while needed_bracket_columns > 0:
+        BracketColumn.objects.create(bracketColumn_Name='Round ' + needed_bracket_columns, bracketColumn_limit=8)
+        needed_bracket_columns =- 1
+
+def create_tournament(request):
+     return render(request, 'SplatourneyApp/create_tournament.html')
+    
+def pairing_screens(request):
+    return render(request, 'SplatourneyApp/pairing_screens.html')
+
