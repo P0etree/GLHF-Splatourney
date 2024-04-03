@@ -38,6 +38,8 @@ def player_registration(request):
         return render(request, 'SplatourneyApp/player_registration.html') 
 
 def registration_type(request):
+    Player.objects.all().delete()
+    Team.objects.all().delete()
     return render(request,'SplatourneyApp/registration_type.html')
 
 def team_registration(request):
