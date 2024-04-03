@@ -41,5 +41,6 @@ urlpatterns = [
     path('pairings/', views.pairings, name='pairings'),
     path('declare_winner/', views.declare_winner, name='declare_winner'),
     path('start_tournament/', views.start_tournament, name='start_tournament'),
-    path('create_bracketColumns', views.create_bracketColumns, name='create_bracketColumns')
+    path('create_bracketColumns', views.create_bracketColumns, name='create_bracketColumns'),
+    path('create_tournament', views.create_tournament, name='create_tournament')
 ]

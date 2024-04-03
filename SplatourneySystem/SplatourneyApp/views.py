@@ -145,4 +145,7 @@ def create_bracketColumns(request):
     while needed_bracket_columns > 0:
         BracketColumn.objects.create(bracketColumn_Name='Round ' + needed_bracket_columns, bracketColumn_limit=8)
         needed_bracket_columns =- 1
+
+def create_tournament(request):
+     return render(request, 'SplatourneyApp/create_tournament.html')
     
