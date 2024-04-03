@@ -173,7 +173,8 @@ def create_starting_entries(request):                                           
         GameEntry.objects.create(pairing_ID=x)
         GameEntry.objects.create(pairing_ID=x)
     for y in teams:
-        
+        GameEntry.objects.create(pairing_ID=y)
+        GameEntry.objects.create(pairing_ID=y)
 
 
 def create_tournament(request):
@@ -201,3 +202,5 @@ def create_team(request):
     else:
         return render("#")
 
+def testBrackets(request):
+    return render(request, 'SplatourneyApp/create_bracket.html')
