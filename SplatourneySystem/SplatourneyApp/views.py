@@ -33,9 +33,9 @@ def player_registration(request):
         p1_rank=request.POST.get("p1rank")
         p1_type=request.POST.get("p1type")
         Player.objects.create(player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_type=p1_type)
-        return render("#")    
+        return redirect("player_registration")    
     else:
-        return render(request, "{% url 'team_registration' %}") 
+        return render(request, 'SplatourneyApp/player_registration.html') 
 
 def registration_type(request):
     return render(request,'SplatourneyApp/registration_type.html')
@@ -172,10 +172,12 @@ def create_starting_entries(request):                                           
     for x in starting_pairings:
         GameEntry.objects.create(pairing_ID=x)
         GameEntry.objects.create(pairing_ID=x)
+    entries= GameEntry.objects.all()
     for y in teams:
+        GameEntry.objects.filter()
+
+    return
         
-
-
 def create_tournament(request):
      return render(request, 'SplatourneyApp/create_tournament.html')
     
