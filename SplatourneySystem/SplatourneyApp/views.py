@@ -64,14 +64,14 @@ def team_register(request):
         p1_type=request.POST.get("p1type")
         Player.objects.create(player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_type=p1_type)
     else:
-        return render(request, "{% url 'team_registration' %}") 
+        return render(request, 'SplatourneyApp/team_registration.html') 
 
 def team_registration(request):
     if (request.method=="POST"):
         Team_ID = request.POST.get('Team_ID')
         Team_Name = request.POST.get('Team_Name')
     else:
-        return render(request, 'SplatourneyApp/team_registration0.html')
+        return render(request, 'SplatourneyApp/team_registration.html')
     
 def team_registration1(request):
     return render(request, 'SplatourneyApp/team_registration1.html')

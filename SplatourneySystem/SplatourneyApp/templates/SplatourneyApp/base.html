@@ -48,19 +48,7 @@
             <a class="navbar-brand" href="#">{% block title %}{% endblock%}</a>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'tournament_details' %}">DETAILS <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'view_registrations' %}">TEAMS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">LIVE BRACKET</a>
-                    </li>
-                    <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'registration_type' %}">REGISTER</a>
-                    </li>
-                    
+                  {% block navbar %}{% endblock%}
                 </ul>
             </div>
         </div>
