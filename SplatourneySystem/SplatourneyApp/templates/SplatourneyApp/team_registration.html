@@ -103,14 +103,13 @@
     <div class="container min-vh-100 d-flex justify-content-center align-items-center width-300px padding-bottom-5px">
       <div class="card">
         <div class="card-body">
-
           <form id="createTeam" method="POST" action="{% url 'team_registration' %}"> {% csrf_token %}
-            
-            <h1>TEAM REGISTRATION</h1>
-            <label for="teamname" class="form-label">TEAM NAME</label>
-            <input type="text" class="form-control" id="teamname" placeholder="Enter Team Name">
-            
-            <h2>PLAYER 1</h2>
+
+            <div class="mb-3">
+              <h2 class="mb-3">TEAM NAME</h2>
+                  <input type="text" class="form-control" id="teamname" placeholder="Enter Team name">
+            </div>     
+            <h2 class="mb-3 mt-5">PLAYER 1</h2>
             <div class="mb-3">
               <label for="p1fname" class="form-label">FIRST NAME</label>
               <input type="text" class="form-control" id="p1fname" name="p1fname" placeholder="Enter First Name">
@@ -122,6 +121,14 @@
             <div class="mb-3">
               <label for="p1ign" class="form-label">IGN</label>
               <input type="text" class="form-control" id="p1ign" name="p1ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p1dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p1fc" placeholder="Enter Friend Code">
             </div>
             <div class="mb-3">
               <label for = "p1rank" class="form-label">CURRENT SPLATOON RANK</label>
@@ -210,6 +217,14 @@
               <input type="text" class="form-control" id="p2ign" name="p2ign" placeholder="Enter in-game name">
             </div>
             <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p2dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p2fc" placeholder="Enter Friend Code">
+            </div>
+            <div class="mb-3">
               <label for = "p2rank" class="form-label">CURRENT SPLATOON RANK</label>
               <select class="form-select" id="p2rank" name="p2rank">
                 <option selected>Select Rank</option>
@@ -293,6 +308,14 @@
             <div class="mb-3">
               <label for="p3ign" class="form-label">IGN</label>
               <input type="text" class="form-control" id="p3ign" name="p3ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p3dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p3fc" placeholder="Enter Friend Code">
             </div>
             <div class="mb-3">
               <label for = "p2rank" class="form-label">CURRENT SPLATOON RANK</label>
@@ -381,6 +404,14 @@
               <input type="text" class="form-control" id="p4ign" name="p4ign" placeholder="Enter in-game name">
             </div>
             <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p4dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p4fc" placeholder="Enter Friend Code">
+            </div>
+            <div class="mb-3">
               <label for = "p4rank" class="form-label">CURRENT SPLATOON RANK</label>
               <select class="form-select" id="p4rank" name="p4rank">
                 <option selected>Select Rank</option>
@@ -467,6 +498,14 @@
               <input type="text" class="form-control" id="p5ign" name="p5ign" placeholder="Enter in-game name">
             </div>
             <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p5dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p5fc" placeholder="Enter Friend Code">
+            </div>
+            <div class="mb-3">
               <label for = "p5rank" class="form-label">CURRENT SPLATOON RANK</label>
               <select class="form-select" id="p5rank" name="p5rank">
                 <option selected>Select Rank</option>
@@ -550,6 +589,14 @@
             <div class="mb-3">
               <label for="p6ign" class="form-label">IGN</label>
               <input type="text" class="form-control" id="p6ign" name="p6ign" placeholder="Enter in-game name">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
+              <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p6dc" placeholder="Enter Discord ID">
+            </div>
+            <div class="mb-3">
+              <label for="PlayerFriendCode" class="form-label">Friend Code</label>
+              <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p6fc" placeholder="Enter Friend Code">
             </div>
             <div class="mb-3">
               <label for = "p6rank" class="form-label">CURRENT SPLATOON RANK</label>
