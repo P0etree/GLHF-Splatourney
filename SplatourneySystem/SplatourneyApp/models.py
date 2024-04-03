@@ -156,7 +156,7 @@ class BracketColumn(models.Model):
         return self.bracketColumn_ID + ": " + self.bracketColumn_Name
 
 class Pairing(models.Model):
-    bracket_ID = models.ForeignKey(Bracket, on_delete=models.CASCADE)
+    bracketColumn_ID = models.ForeignKey(BracketColumn, on_delete=models.CASCADE)
     pairing_ID = models.IntegerField()
     pairing_Name = models.CharField(max_length=20)
     pairing_Status = models.CharField(max_length=11)
