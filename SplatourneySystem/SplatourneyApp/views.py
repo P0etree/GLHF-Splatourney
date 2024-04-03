@@ -139,12 +139,38 @@ def start_tournament(request):
     #t = pk something something
     Tournament.objects.filter(pk='t').update(registration_status='Closed', tournament_status='ongoing')
 
-def create_bracketColumns(request):
-    total_player_count = 'total_player_count'
-    needed_bracket_columns = total_player_count/8
-    while needed_bracket_columns > 0:
-        BracketColumn.objects.create(bracketColumn_Name='Round ' + needed_bracket_columns, bracketColumn_limit=8)
-        needed_bracket_columns =- 1
+def create_bracket(request):                                                                                            #Function to create bracket
+    Bracket.objects.create()                                                                                            
+    total_team_count = 'total_team_count'                                                                               #Takes the total amount of teams
+    counter = 1                                                                                                         #Divides the players by 8 (each bracket column will have 8 pairings)
+    while counter < total_team_count:                                                                                   #loop to create bracket columns
+        BracketColumn.objects.create(bracketColumn_Name='Column ' + counter, bracketColumn_limit=counter)
+        counter = counter*2
+
+def create_pairings(request):                                                                                           #Function to create pairings
+    all_columns = BracketColumn.objects.all()                                                                           #Query to get a list of all bracket columns
+    for x in all_columns:                                                                                               #Loop to make pairings in all bracket columns 
+        column = BracketColumn.objects.get(pk=x)                                                                        #Get a specific bracket column using pk
+        column_limit = column.bracketColumn_Limit                                                                       #Get the limit of the bracket column, to know when the loop stops making pairings
+        column_id = column.pk                                                                                           #store in a variable
+        for y in range(0, column_limit):                                                                                #Loop to make pairings based on the bracket column limit
+            Pairing.objects.create(bracketColumn_ID=column_id, pairing_Name='Pairing ' + column_id + y, pairing_Status='Not Started')   #Creating the pairing
+
+def create_starting_entries(request):                                                                                  #Function to create starting game entries for the teams (game entries for round 1)
+    total_team_count = 'total_team_count'
+    counter = 1                                                                                                        
+    while counter < total_team_count:
+           counter = counter*2
+    start = BracketColumn.objects.get(bracketColumn_Limit=counter)                                                 
+    start_ID = start.pk
+    starting_pairings = Pairing.objects.all().filter(BracketColumn_ID=start_ID)
+    teams = Team.objects.all()
+    for x in starting_pairings:
+        GameEntry.objects.create(pairing_ID=x)
+        GameEntry.objects.create(pairing_ID=x)
+    for y in teams:
+        
+
 
 def create_tournament(request):
      return render(request, 'SplatourneyApp/create_tournament.html')
