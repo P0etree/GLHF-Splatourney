@@ -146,3 +146,6 @@ def create_bracketColumns(request):
         BracketColumn.objects.create(bracketColumn_Name='Round ' + needed_bracket_columns, bracketColumn_limit=8)
         needed_bracket_columns =- 1
     
+    
+def pairing_screens(request):
+    return render(request, 'SplatourneyApp/pairing_screens.html')
