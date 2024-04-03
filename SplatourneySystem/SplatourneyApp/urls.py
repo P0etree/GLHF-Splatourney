@@ -36,11 +36,13 @@ urlpatterns = [
     path('registrations/', views.view_registrations, name='view_registrations'),
     path('registration_type/', views.registration_type, name='registration_type'),
     path('login_page/', views.login_page, name='login_page'),
+    path('login_moderator/', views.login_moderator, name='login_moderator'),
     path('create_tournament/', views.create_tournament, name='create_tournament'),
     path('edit_tournament/', views.edit_tournament, name='edit_tournament'),
     path('pairings/', views.pairings, name='pairings'),
     path('declare_winner/', views.declare_winner, name='declare_winner'),
     path('start_tournament/', views.start_tournament, name='start_tournament'),
     path('create_bracketColumns', views.create_bracketColumns, name='create_bracketColumns'),
-    path('create_tournament', views.create_tournament, name='create_tournament')
+    path('create_tournament', views.create_tournament, name='create_tournament'),
+    path('pairing_screens/', views.pairing_screens, name='pairing_screens'),
 ]
