@@ -58,28 +58,28 @@
               <form class="form">
                 <div class="mb-3">
                   <label for="PlayerFirstName" class="form-label">FIRST NAME</label>
-                  <input type="text" class="form-control" id="FirstNameInput" placeholder="Enter First name">
+                  <input type="text" class="form-control" id="FirstNameInput" name="p1fname" placeholder="Enter First name">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerLastName" class="form-label">LAST NAME</label>
-                  <input type="text" class="form-control" id="LastNameInput" placeholder="Enter Last name">
+                  <input type="text" class="form-control" id="LastNameInput" name="p1lname" placeholder="Enter Last name">
                 </div>
                 <div class="mb-3">
                   <label for="ign" class="form-label">IGN</label>
-                  <input type="text" class="form-control" id="ignInput" placeholder="Enter in-game name">
+                  <input type="text" class="form-control" id="ignInput" name="p1ign" placeholder="Enter in-game name">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
-                  <input type="text" class="form-control" id="PlayerDiscordIDInput" placeholder="Enter Discord ID">
+                  <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p1dc" placeholder="Enter Discord ID">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerFriendCode" class="form-label">Friend Code</label>
-                  <input type="text" class="form-control" id="PlayerFriendCodeInput" placeholder="Enter Friend Code">
+                  <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p1fc" placeholder="Enter Friend Code">
                 </div>
                 <div class="mb-3">
                   <label for="rank" class="form-label">CURRENT SPLATOON 3 RANK</label>
                 <div class="mb-3">
-                  <select class="form-select">
+                  <select class="form-select" name="p1rank">
                     <option selected>Select Rank</option>
                     <option value="1">C-</option>
                     <option value="2">C</option>
@@ -97,7 +97,7 @@
                 </div>
                 </div>
                   <div class="mb-3 justify-content-center" style="position:relative">
-                    <label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
+                    <!--<label for="roles" class="form-label pt-3">PREFERRED TEAM ROLES</label>
                     <div class="mb-3" style="margin-left: 50px;">
                       
                       <input type="checkbox" class="form-check-input" id="front-line">
@@ -118,7 +118,17 @@
                       <label class="form-check-label" for="back-line">Back-line</label>
 
                       <input type="checkbox" class="form-check-input" id="support"style="margin-left:30px;">
-                      <label class="form-check-label" for="support"style="margin-left:50px">Support</label>
+                      <label class="form-check-label" for="support"style="margin-left:50px">Support</label>-->
+
+                      <select class="form-select" name="p1role">
+                        <option selected>Select Role</option>
+                        <option value="Front-line">Front-line</option>
+                        <option value="Slayer">Slayer</option>
+                        <option value="Mid-Line">Mid-Line</option>
+                        <option value="Skirmisher">Skirmisher</option>
+                        <option value="Back-Line">Back-Line</option>
+                        <option value="Support">Support</option>
+                      </select>
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary justify-content-right">REGISTER</button>
