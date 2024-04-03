@@ -53,8 +53,11 @@ def register(request):
 
 #team register - takes inputs from team registration form
 #practically 6 player forms
-def team_register(request):
-    if(request.method=="POST"):
+
+def team_registration(request):
+    if (request.method=="POST"):
+        Team_ID = request.POST.get('Team_ID')
+        Team_Name = request.POST.get('Team_Name')
         p1_fname=request.POST.get("p1fname")
         p1_lname=request.POST.get("p1lname")
         p1_in_game_name=request.POST.get("p1ign")
@@ -63,36 +66,24 @@ def team_register(request):
         p1_rank=request.POST.get("p1rank")
         p1_type=request.POST.get("p1type")
         Player.objects.create(player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_type=p1_type)
+        p2_fname=request.POST.get("p2fname")
+        p2_lname=request.POST.get("p2lname")
+        p2_in_game_name=request.POST.get("p2ign")
+        p2_dc_id=request.POST.get("PlayerDiscordInput")
+        p2_fc=request.POST.get("PlayerFriendCodeInput")
+        p2_rank=request.POST.get("p1rank")
+        p2_type=request.POST.get("p1type")
+        Player.objects.create(player_fname=p2_fname, player_lname=p2_lname, player_in_game_name=p2_in_game_name, player_dc_id=p2_dc_id, player_fc=p2_fc, player_rank=p2_rank, player_type=p2_type)
+        p3_fname=request.POST.get("p1fname")
+        p3_lname=request.POST.get("p1lname")
+        p1_in_game_name=request.POST.get("p1ign")
+        p1_dc_id=request.POST.get("PlayerDiscordInput")
+        p1_fc=request.POST.get("PlayerFriendCodeInput")
+        p1_rank=request.POST.get("p1rank")
+        p1_type=request.POST.get("p1type")
+        Player.objects.create(player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_type=p1_type)
     else:
-        return render(request, "{% url 'team_registration' %}") 
-
-def team_registration(request):
-    if (request.method=="POST"):
-        Team_ID = request.POST.get('Team_ID')
-        Team_Name = request.POST.get('Team_Name')
-    else:
-        return render(request, 'SplatourneyApp/team_registration0.html')
-    
-def team_registration1(request):
-    return render(request, 'SplatourneyApp/team_registration1.html')
-
-def team_registration2(request):
-    return render(request, 'SplatourneyApp/team_registration2.html')
-    
-
-def team_registration3(request):
-   return render(request, 'SplatourneyApp/team_registration3.html')
-    
-def team_registration4(request):
-    return render(request, 'SplatourneyApp/team_registration4.html')
-    
-
-def team_registration5(request):
-     return render(request, 'SplatourneyApp/team_registration5.html')
-
-
-def team_registration6(request):
-     return render(request, 'SplatourneyApp/team_registration6.html')
+        return render(request, 'SplatourneyApp/team_registration.html')
     
 def view_registrations(request):
     Player_objects = Player.objects.all()
