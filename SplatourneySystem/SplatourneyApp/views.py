@@ -149,3 +149,6 @@ def create_bracketColumns(request):
 def create_tournament(request):
      return render(request, 'SplatourneyApp/create_tournament.html')
     
+def pairing_screens(request):
+    return render(request, 'SplatourneyApp/pairing_screens.html')
+
