@@ -16,6 +16,91 @@
 
     {% block content %}
     <body>
+        <link rel ="stylesheet" href="splatourney.css">
+        <style>
+            body{
+              background-color: transparent;
+            }
+            .card{
+              background-color: #D9D9D9;
+              width:800px;
+              padding-top: 60px;
+              padding-bottom: 40px;
+              padding-left: 40px;
+              padding-right: 40px;
+        
+            }
+        
+            .card-title{
+              text-decoration:solid;
+            }
+        
+            .form{
+              flex-direction: row;
+            }
+        
+            .form-control{
+              border-radius: 10px;
+            }
+        
+            .form-select{
+              border-radius: 10px;
+              padding-top: 10px;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 50px;
+            }
+          
+            .btn-primary {
+              color: white;
+              background-color:#008CC6;
+              border: none;
+              border-radius: 10px;
+        
+              
+            }
+        
+            .contained {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box; /* Ensure padding is included in height calculation */
+            }
+            .btn-custom {
+                width: 400px;
+                height: 52px;
+                font-size: 1.2em;
+                margin: 10px;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 15px;
+                font-family: 'Luckiest Guy', sans-serif;
+                font-size: 30px;
+                font-weight: 300;
+                line-height: 35px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:white;
+            }
+            .current {
+                background-color: #ef216c;
+            }
+            .others {
+                background-color: #008CC6;
+            }
+            p {
+                font-family: 'Oswald', sans-serif;
+                font-size: 40px;
+                font-weight: 400;
+                line-height: 44px;
+                letter-spacing: 0em;
+                text-align: center;
+                color:white;}
+        </style>
+
         <!--Heading-->
         <div class="row">
             <div class = "col-10">
@@ -23,7 +108,7 @@
             </div>
             <!--Button to Create team-->
             <div class = "col-2">
-                <button href="#"  class="button"> Create Team </a>
+                <a href="{% url 'create_team' %}"  class="btn btn-primary justify-content-end"> Create Team </a>
             </div>
         </div>
         <!--Header for Registrations-->

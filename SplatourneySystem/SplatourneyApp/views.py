@@ -201,7 +201,7 @@ def create_team(request):
         Player.objects.filter(player_in_game_name=member2).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
         Player.objects.filter(player_in_game_name=member3).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
         Player.objects.filter(player_in_game_name=member4).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
-        return render("#")
+        return redirect(request, 'SplatourneyApp/create_team.html')
     else:
-        return render("#")
+        return render(request, 'SplatourneyApp/team_registration.html')
 
