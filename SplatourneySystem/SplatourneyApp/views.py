@@ -17,7 +17,7 @@ def login_moderator(request):
         if not currentuser:
             return render(request, 'SplatourneyApp/login_moderator.html')
         else:
-            return redirect('tournament_details')
+            return redirect('tournaments_screen')
     else:
         return render(request, 'SplatourneyApp/login_moderator.html')
 
@@ -118,9 +118,9 @@ def create_tournament(request):
         registration_status=request.POST.get("registration_status")
         tournament_status=request.POST.get("tournament_status")
         Tournament.objects.create(tournament_title=tournament_title, tournament_description=tournament_description, tournament_mode=tournament_mode, registration_status=registration_status, tournament_status=tournament_status)
-        return redirect('tournament details screen')
+        return redirect('tournament_details')
     else:
-        return render('tournament details screen')
+        return render(request, 'SplatourneyApp/create_tournament.html')
 
 def edit_tournament(request, pk):
     if request.method=="POST":
@@ -147,6 +147,7 @@ def declare_winner(request):
 def start_tournament(request):
     #t = pk something something
     Tournament.objects.filter(pk='t').update(registration_status='Closed', tournament_status='ongoing')
+    return redirect('tournament_details')
 
 def create_bracket(request):                                                                                            #Function to create bracket
     Bracket.objects.create()                                                                                            
@@ -204,9 +205,9 @@ def create_team(request):
         Player.objects.filter(player_in_game_name=member2).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
         Player.objects.filter(player_in_game_name=member3).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
         Player.objects.filter(player_in_game_name=member4).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
-        return render("#")
+        return redirect('view_registrations')
     else:
-        return render("#")
+        return render(request, "SplatourneyApp/create_team.html")
 
 def tournaments_screen(request):
     return render(request, 'SplatourneyApp/tournaments_screen.html')
