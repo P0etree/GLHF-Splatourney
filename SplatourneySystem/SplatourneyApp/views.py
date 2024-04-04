@@ -139,7 +139,7 @@ def declare_winner(request):
     if request.method=='POST':
         winner = 'winner'
         Team.objects.filter(team_Name=winner).update(wins=+1)
-    return render ('pairings screen')
+    return render ('pairing_screens')
 
 def start_tournament(request):
     #t = pk something something
@@ -205,3 +205,5 @@ def create_team(request):
     else:
         return render("#")
 
+def tournaments_screen(request):
+    return render(request, 'SplatourneyApp/tournaments_screen.html')
