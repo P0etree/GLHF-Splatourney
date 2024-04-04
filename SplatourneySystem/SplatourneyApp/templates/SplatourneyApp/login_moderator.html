@@ -55,14 +55,14 @@
         <div class="card mx-auto">
           <h5 class="card-title mx-auto">LOGIN</h5>
             <div class="card-body">
-              <form class="form">
+              <form class="form" method="POST" action="{% url 'login_moderator' %}"> {% csrf_token %}
                 <div class="mb-3">
                   <label for="ModUsernameTrial" class="form-label">USERNAME</label>
-                  <input type="text" class="form-control" id="ModUsernameTrial" placeholder="Enter Username">
+                  <input type="text" class="form-control" id="ModUsernameTrial" name='mod_name' placeholder="Enter Username">
                 </div>
                 <div class="mb-3">
                   <label for="ModPasswordTrial" class="form-label">PASSWORD</label>
-                  <input type="Password" class="form-control" id="ModPasswordTrial" placeholder="Enter Password">
+                  <input type="Password" class="form-control" id="ModPasswordTrial" name='mod_password' placeholder="Enter Password">
                 </div>
                   <button type="submit" class="btn btn-primary justify-content-right">REGISTER</button>
               </form>

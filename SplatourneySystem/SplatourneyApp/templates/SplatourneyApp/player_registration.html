@@ -55,7 +55,7 @@
         <div class="card mx-auto">
           <h5 class="card-title mx-auto">PLAYER REGISTRATION</h5>
             <div class="card-body">
-              <form class="form">
+              <form class="form" method="POST" action="{% url 'player_registration' %}"> {% csrf_token %}
                 <div class="mb-3">
                   <label for="PlayerFirstName" class="form-label">FIRST NAME</label>
                   <input type="text" class="form-control" id="FirstNameInput" name="p1fname" placeholder="Enter First name">

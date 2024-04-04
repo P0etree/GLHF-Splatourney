@@ -30,7 +30,7 @@ class Team(models.Model):
     
 class Moderator(models.Model):
     moderator_username=models.CharField(max_length=20,primary_key=True)
-    moderator_password=models.CharField
+    moderator_password=models.CharField(max_length=20)
     objects = models.Manager()
 
     def getModeratorUsername(self):
