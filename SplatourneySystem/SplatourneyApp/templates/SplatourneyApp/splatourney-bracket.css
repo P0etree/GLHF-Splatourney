@@ -1,0 +1,92 @@
+
+.round {
+  float: left;
+}
+.round.r-of-4 {
+
+}
+.round.r-of-2 {
+  margin-top: 25px;
+  border: none;
+}
+
+.bracket-game-wrapper{
+
+}
+
+.bracket-game {
+max-width: 125px;
+margin: 10px 0;
+border: none;
+border-radius: 10px;
+background-color: black;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 10px;
+padding-right: 20px;
+}
+
+.gameslot{
+width: 30%;
+float: left;
+margin: 0px;
+border: none;
+border-radius: 10px 0px 0px 10px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 5px;
+padding-bottom: 35px;
+background: #EF216C;
+text-align: center; 
+}
+
+
+.team {
+  min-width: 100px;
+  padding-left: 10px;
+  
+}
+
+.team.name{
+
+}
+
+.team.win {
+  color: #FFFFFF;
+}
+.team.loss {
+  color: #464646;
+}
+.connectors {
+  float: left;
+  min-width: 35px;
+}
+.connectors.r-of-2 .top-line {
+  position: relative;
+  top: 30px;
+  width: 17px;
+  border: 1px solid #AAA;
+}
+.connectors.r-of-2 .bottom-line {
+  position: relative;
+  top: 81px;
+  width: 17px;
+  border: 1px solid #AAA;
+}
+.connectors.r-of-2 .vert-line {
+  position: relative;
+  top: 26px;
+  left: -16px;
+  height: 55px;
+  border-right: 2px solid #AAA;
+}
+.connectors.r-of-2 .next-line {
+  position: relative;
+  top: -4px;
+  left: 17px;
+  width: 17px;
+  border: 1px solid #AAA;
+}
+.clear {
+  clear: both;
+}
