@@ -20,6 +20,6 @@ from . import views
 
 urlpatterns = [
 
-    path('', views.create_bracket, name='create_bracketColumns'),
+    path('', views.create_team, name='create_team'),
 
 ]

@@ -3,6 +3,6 @@ from .models import *
 
 
 
-def create_bracket(request):
-    return render(request,'SplatourneyApp/create_bracket.html')
+def create_team(request):
+    return render(request,'SplatourneyApp/create_team.html')
 

@@ -1,10 +1,10 @@
 {% extends 'SplatourneyApp/base.html' %}
-{% block title %} <h1> Team Registration </h1> {% endblock %}
-
+{% block title %} <h1> Schedule </h1> {% endblock %}
+<!-- schedule viewing -->
 {% block content %}
-<head>
+<!-- <head>
   <link rel="stylesheet" href="SplatourneyApp/splatourney.css">
-</head>
+</head> -->
 
 <body>
   <style>
@@ -18,15 +18,30 @@
           padding-bottom: 40px;
           padding-left: 40px;
           padding-right: 40px;
+          margin-left: 200px;
+          margin-right: 200px;
 
         }
+
+
 
         .card-title{
           text-decoration:solid;
         }
 
         .form{
-          flex-direction: row;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch; 
+          width: 100%;
+        }
+
+        .horizontal-line{
+          margin-top: -85px;
+          height: 1px;
+          background-color: black;
+          width: 100%;
+
         }
 
         .form-control{
@@ -81,6 +96,36 @@
     .others {
         background-color: #008CC6;
     }
+
+    /* The whole card/form */
+    .space{
+      padding-top: 15px;
+    }
+
+    .spacing {
+      margin-right: 40px;  /* Adjusts the space between the number and 'team' text */
+    }
+
+    .time{
+      margin-left: 30px;
+      text-align: right;
+    }
+
+    .form-label {
+      font-size: 20px; /* Adjust font size as needed */
+      max-width: 60%;
+      flex-grow: 1; /* Allows the label to grow and fill available space */
+      white-space: normal; /* Overrides the default which might be set to nowrap */
+      word-wrap: break-word; /* Ensures words break and wrap onto the next line */
+      min-width: 0; /* Prevents flex items from growing too large */
+    }
+
+    .pairing{
+      font-weight: bold;
+      margin-bottom: 100px;
+    }
+
+
     p {
         font-family: 'Oswald', sans-serif;
         font-size: 40px;
@@ -89,49 +134,41 @@
         letter-spacing: 0em;
         text-align: center;
         color:white;}
+
   </style>
 
-<p>CREATE TEAM</p>
+<p>ONGOING SCHEDULE</p>
+<div class="space"></div>
+
 
   <div class="has-bg-img">
     <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
       <div class="container">
-        <div class="card mx-auto">
+        <div class="card mx-auto pt-2 ">
             <div class="card-body">
               <form class="form">
-                <div class="mb-3">
-                  <label for="teamname" class="form-label">TEAM NAME</label>
-                  <input type="text" class="form-control" id="teamname" placeholder="Enter Team name">
+                <!-- for each schedule instance -->
+                <div class="mb-4">
+                  <label for="game" class="form-label spacing">5</label>
+                  <label for="pairing" class="form-label pairing">Team VeronIKA VS Squidbeak</label>
+                  <label for="time" class="form-label time">3:30 PM - 4 pm</label>
+                  <div class="horizontal-line"></div>
                 </div>
-                <div class="mb-3">
-                  <label for = "p4rank" class="form-label">CAPTAIN</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
-                  <label for = "p4rank" class="form-label">CO-CAPTAIN</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
+                <!---->
+                <div class="mb-4">
+                  <label for="game" class="form-label spacing">6</label>
+                  <label for="pairing" class="form-label pairing">Kwekkwek respawn VS winner of game 4</label>
+                  <label for="time" class="form-label time">4 pm - 4:30 pm</label>
+                  <div class="horizontal-line"></div>
                 </div>
-                <div class="mb-3">
-                  <label for = "p4rank" class="form-label">MEMBER 1</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
-                <label for = "p4rank" class="form-label">MEMBER 2</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label for = "p4rank" class="form-label">MEMBER 3  (optional)</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
-                <label for = "p4rank" class="form-label">MEMBER 4 (optional)</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
-                  </select>
-                </div>
+                
 
 
+
+                <!-- FOR MODERATORS
                 <div style="text-align: right;">
                   <button style="background-color:#ef216c" type="submit" class="btn btn-primary justify-content-right">SAVE</button>
-                </div>
+                </div> -->
 
               </form>
             </div>
