@@ -1,0 +1,182 @@
+{% extends 'SplatourneyApp/base.html' %}
+{% block title %} <h1> Schedule </h1> {% endblock %}
+<!-- schedule viewing -->
+{% block content %}
+<!-- <head>
+  <link rel="stylesheet" href="SplatourneyApp/splatourney.css">
+</head> -->
+
+<body>
+  <style>
+        body{
+          background-color: transparent;
+        }
+        .card{
+          background-color: #D9D9D9;
+          width:800px;
+          padding-top: 60px;
+          padding-bottom: 40px;
+          padding-left: 40px;
+          padding-right: 40px;
+          margin-left: 200px;
+          margin-right: 200px;
+
+        }
+
+
+
+        .card-title{
+          text-decoration:solid;
+        }
+
+        .form{
+          display: flex;
+          flex-direction: column;
+          align-items: stretch; 
+          width: 100%;
+        }
+
+        .horizontal-line{
+          margin-top: -85px;
+          height: 1px;
+          background-color: black;
+          width: 100%;
+
+        }
+
+        .form-control{
+          border-radius: 10px;
+        }
+
+        .form-select{
+          border-radius: 10px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 50px;
+        }
+
+        .btn-primary {
+          color: white;
+          background-color:#008CC6;
+          border: none;
+          border-radius: 10px;
+
+
+        }
+
+    .contained {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box; /* Ensure padding is included in height calculation */
+    }
+    .btn-custom {
+        width: 400px;
+        height: 52px;
+        font-size: 1.2em;
+        margin: 10px;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 35px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;
+    }
+    .current {
+        background-color: #ef216c;
+    }
+    .others {
+        background-color: #008CC6;
+    }
+
+    /* The whole card/form */
+    .space{
+      padding-top: 15px;
+    }
+
+    .spacing {
+      margin-right: 40px;  /* Adjusts the space between the number and 'team' text */
+    }
+
+    .time{
+      margin-left: 30px;
+      text-align: right;
+    }
+
+    .form-label {
+      font-size: 20px; /* Adjust font size as needed */
+      max-width: 60%;
+      flex-grow: 1; /* Allows the label to grow and fill available space */
+      white-space: normal; /* Overrides the default which might be set to nowrap */
+      word-wrap: break-word; /* Ensures words break and wrap onto the next line */
+      min-width: 0; /* Prevents flex items from growing too large */
+    }
+
+    .pairing{
+      font-weight: bold;
+      margin-bottom: 100px;
+    }
+
+
+    p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 44px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;}
+
+  </style>
+
+<p>ONGOING SCHEDULE</p>
+<div class="space"></div>
+
+
+  <div class="has-bg-img">
+    <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
+      <div class="container">
+        <div class="card mx-auto pt-2 ">
+            <div class="card-body">
+              <form class="form">
+                <!-- for each schedule instance -->
+                <div class="mb-4">
+                  <label for="game" class="form-label spacing">5</label>
+                  <label for="pairing" class="form-label pairing">Team VeronIKA VS Squidbeak</label>
+                  <label for="time" class="form-label time">3:30 PM - 4 pm</label>
+                  <div class="horizontal-line"></div>
+                </div>
+                <!---->
+                <div class="mb-4">
+                  <label for="game" class="form-label spacing">6</label>
+                  <label for="pairing" class="form-label pairing">Kwekkwek respawn VS winner of game 4</label>
+                  <label for="time" class="form-label time">4 pm - 4:30 pm</label>
+                  <div class="horizontal-line"></div>
+                </div>
+                
+
+
+
+                <!-- FOR MODERATORS
+                <div style="text-align: right;">
+                  <button style="background-color:#ef216c" type="submit" class="btn btn-primary justify-content-right">SAVE</button>
+                </div> -->
+
+              </form>
+            </div>
+          </div>      
+      </div>
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}

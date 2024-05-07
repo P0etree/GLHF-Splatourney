@@ -183,7 +183,8 @@ def create_starting_entries(request):                                           
         GameEntry.objects.create(pairing_ID=x)
     entries= GameEntry.objects.all()
     for y in teams:
-        GameEntry.objects.filter()
+        GameEntry.objects.create(pairing_ID=y)
+        GameEntry.objects.create(pairing_ID=y)
 
     return
         
@@ -226,5 +227,9 @@ def edit_team_registration(request):
 def create_moderator(request):
     return render(request,'SplatourneyApp/create_moderator.html')
 
+def testBrackets(request):
+    return render(request, 'SplatourneyApp/create_bracket.html')
+
 def manage_moderators(request):
     return render(request,'SplatourneyApp/manage_moderators.html')
+
