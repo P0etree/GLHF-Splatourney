@@ -3,6 +3,6 @@ from .models import *
 
 
 
-def create_team(request):
-    return render(request,'SplatourneyApp/create_team.html')
+def edit_schedule(request):
+    return render(request,'SplatourneyApp/edit_schedule.html')
 

@@ -1,0 +1,201 @@
+{% extends 'SplatourneyApp/base.html' %}
+{% block title %} <h1> Schedule </h1> {% endblock %}
+<!-- schedule viewing -->
+{% block content %}
+<!-- <head>
+  <link rel="stylesheet" href="SplatourneyApp/splatourney.css">
+</head> -->
+
+<body>
+  <style>
+        body{
+          background-color: transparent;
+        }
+        .card{
+          background-color: #D9D9D9;
+          width:800px;
+          padding-top: 60px;
+          padding-bottom: 40px;
+          padding-left: 40px;
+          padding-right: 40px;
+          margin-left: 200px;
+          margin-right: 200px;
+
+        }
+
+
+
+        .card-title{
+          text-decoration:solid;
+        }
+
+        .form{
+          display: flex;
+          flex-direction: row;
+          align-items: stretch; 
+          width: 100%;
+        }
+
+        .horizontal-line{
+          margin-top: -85px;
+          height: 1px;
+          background-color: black;
+          width: 100%;
+
+        }
+
+        .form-control{
+          border-radius: 10px;
+        }
+        
+
+        .form-select{
+          border: none;
+          border-radius: 5px;
+          padding: 10px 15px 10px;
+          margin-left: 15px;
+          width: auto;
+        }
+
+        .game-select {
+          display: flex;
+          margin-top: 0px;
+          flex-direction: column;  /* Aligns children (label and select) in a column */
+          align-items: flex-start;  /* Aligns items to the start of the flex container */
+          width: 100%;  /* Takes full width to fit within its parent container */
+        }
+
+        .btn-primary {
+          color: white;
+          background-color:#008CC6;
+          border: none;
+          border-radius: 10px;
+
+
+        }
+
+    .contained {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box; /* Ensure padding is included in height calculation */
+    }
+    .btn-custom {
+        width: 400px;
+        height: 52px;
+        font-size: 1.2em;
+        margin: 10px;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 15px;
+        font-family: 'Luckiest Guy', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 35px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;
+    }
+    .current {
+        background-color: #ef216c;
+    }
+    .others {
+        background-color: #008CC6;
+    }
+
+    /* The whole card/form */
+    .space{
+      padding-top: 15px;
+    }
+
+    .spacing {
+      margin-right: 40px;  /* Adjusts the space between the number and 'team' text */
+    }
+
+    .form-label {
+      max-width: 60%;
+      flex-grow: 1; /* Allows the label to grow and fill available space */
+      white-space: normal; /* Overrides the default which might be set to nowrap */
+      word-wrap: break-word; /* Ensures words break and wrap onto the next line */
+      min-width: 0; /* Prevents flex items from growing too large */
+      margin-bottom: 0px;
+    }
+
+
+
+    p {
+        font-family: 'Oswald', sans-serif;
+        font-size: 40px;
+        font-weight: 400;
+        line-height: 44px;
+        letter-spacing: 0em;
+        text-align: center;
+        color:white;}
+
+  </style>
+
+<p>ONGOING SCHEDULE</p>
+<div class="space"></div>
+
+
+  <div class="has-bg-img">
+    <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
+      <div class="container">
+        <div class="card mx-auto pt-2 ">
+            <div class="card-body">
+              <form class="form">
+                <!-- ROW 1 -->
+                <!-- select game no. -->
+                <div class="mb-4 game-select">
+                  <label for="game" class="form-label ml-3">GAME</label>
+                  <select class="form-select" id="game" name="game">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                  </select>
+                </div>
+                <!---->
+                <!-- start time -->
+                <div class="mb-4 game-select">
+                  <div class="form-group">
+                    <label for="time-start">START</label>
+                    <input type="time" class="form-control ml-3" id="time-start" name="time-start">
+                  </div>
+                </div>
+                <!---->
+                <!-- end time -->
+                <div class="mb-4 game-select">
+                  <div class="form-group">
+                    <label for="time-end">END</label>
+                    <input type="time" class="form-control ml-3" id="time-end" name="time-end">
+                  </div>
+                </div>
+                <!-- delete button -->
+                <div class="mb-4 game-select">
+                  <div class="form-group">
+                    <button type="button" class="btn btn-danger">DELETE</button>
+                  </div>
+                </div>
+              </form>
+              <div style="text-align: right;">
+                <button style="background-color:#ef216c" type="submit" class="btn btn-primary justify-content-right">SAVE</button>
+              </div>
+            </div>
+            <div class="horizontal-line"></div>
+            <!-- END OF ROW 1 -->
+          </div>   
+             
+      </div>
+    </div>
+  </div>
+</body>
+
+
+{% endblock %}
