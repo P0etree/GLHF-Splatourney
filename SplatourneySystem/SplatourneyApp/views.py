@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 
 
@@ -123,6 +123,7 @@ def create_tournament(request):
         return render(request, 'SplatourneyApp/create_tournament.html')
 
 def edit_tournament(request, pk):
+    e = get_object_or_404(Tournament,pk=pk)
     if request.method=="POST":
         tournament_title=request.POST.get("tournament_title")
         tournament_description=request.POST.get("tournament_description")
@@ -132,7 +133,27 @@ def edit_tournament(request, pk):
         Tournament.objects.filter(pk=pk).update(tournament_title=tournament_title, tournament_description=tournament_description, tournament_mode=tournament_mode, registration_status=registration_status, tournament_status=tournament_status)
         return redirect()
     else:
-        return render ()
+        return render (request, 'SplatourneyApp/edit_tournament.html', {'e':e})
+    # def update_employees(request, pk):
+    # #stores the pk in a variable incase the page has to be loaded/reloaded
+    # e = get_object_or_404(Employee, pk=pk)
+    # #triggers the update process when the submit button is pressed
+    # if(request.method=="POST"):
+    #     #Variables with request.POST.get gather data from the form and stores it
+    #     id_number = Employee.objects.get(pk=pk).id_number
+    #     rate = request.POST.get('rate')
+    #     allowance = request.POST.get('allowance')
+    #     #updates all fields besides allowance, updating allowance is separate to allow for when allowance input is empty
+    #     Employee.objects.filter(pk=pk).update(rate=rate)
+    #     if allowance =="":
+    #         Employee.objects.filter(id_number=id_number).update(allowance=0)
+    #         return redirect('employees_page')
+    #     else:
+    #         Employee.objects.filter(id_number=id_number).update(allowance=allowance)
+    #         return redirect('employees_page')
+    # #For when the page is first loaded
+    # else:
+    #     return render(request, 'payroll_app/update_employees.html', {'e':e})
 
 def pairings(request):
     pairing_objects = Pairing.objects.all()

@@ -89,7 +89,7 @@
         color:white;}
   </style>
 
-<p>Create Tournament</p>
+<p>Edit Tournament</p>
 
   <div class="has-bg-img">
     <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
@@ -99,12 +99,12 @@
               <form class="form">
                 <div class="mb-3">
                   <label for="tournament_title" class="form-label">TITLE</label>
-                  <input type="text" class="form-control" id="tournament_title" placeholder="Enter tournament title">
+                  <input type="text" class="form-control" id="tournament_title" value = "{{e.tournament_title}}">
                 </div>
                 <div class="mb-3">
                   <label for="tournament_description" class="form-label">DESCRIPTION</label>
                   <div>
-                    <textarea style="border-radius: 10px;border-color: #D9D9D9;" id="tournament_description" name="tournament_description" rows="4" cols="80" placeholder=" Enter detailed description"></textarea>
+                    <textarea style="border-radius: 10px;border-color: #D9D9D9;" id="tournament_description" name="tournament_description" rows="4" cols="80" value = "{{e.tournament_title}}"></textarea>
                   </div>
                   
                 </div>
@@ -160,7 +160,13 @@
       </div>
     </div>
   </div>
+  <script>
+    if (e.tournament_mode == "online"){
+      document.getElementById("online").checked=true;
+    } else {
+      document.getElementById("lan").checked=true;
+    }
+  </script>
 </body>
   
-
 {% endblock %}
