@@ -7,7 +7,7 @@ class Team(models.Model):
     team_Name = models.CharField(max_length=30)
     wins = models.IntegerField()
     losses = models.IntegerField()
-    team_Rank = models.IntegerField()
+    team_Rank = models.IntegerField(blank=True, null=True)
     objects = models.Manager()
 
     def getTeam_ID(self):
@@ -54,7 +54,7 @@ class Player(models.Model):
     player_type=models.CharField(max_length=10, default="member")
     player_checkin_status=models.CharField(max_length=20)
     objects = models.Manager()
-    Team_ID = models.ForeignKey(Team, blank=True, null=True, on_delete=models.CASCADE)    
+    Team_ID = models.ForeignKey(Team, on_delete=models.CASCADE)    
 
 
     def getPlayer_ID(self):
