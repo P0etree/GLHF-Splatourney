@@ -11,6 +11,9 @@
   <li class="nav-item">
     <a class="nav-link" href="#">LIVE BRACKET</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'pairing_screens' %}">PAIRINGS</a>
+  </li>
 {% endblock %}
 
 {% block content %}
@@ -85,7 +88,7 @@ The 1st place team will receive a bust-up banner of their team made by @eneosshi
 
   <div class="fixed ">
     <a href="{% url 'registration_type' %}" class="btn btn-custom player">REGISTER</a>
-    
+    <a href="{% url 'start_tournament' %}" class="btn btn-custom player">START</a>
   </div>
 </body>
 {% endblock %}

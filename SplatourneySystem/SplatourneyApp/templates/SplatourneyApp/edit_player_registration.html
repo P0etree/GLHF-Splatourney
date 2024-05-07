@@ -1,5 +1,5 @@
 {% extends 'SplatourneyApp/base.html' %}
-{% block title %} <h1> Player Registration </h1> {% endblock %}
+{% block title %} <h1> Edit Player Registration </h1> {% endblock %}
 
 {% block content %}
 <head>
@@ -53,7 +53,7 @@
     <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
       <div class="container">
         <div class="card mx-auto">
-          <h5 class="card-title mx-auto">PLAYER REGISTRATION</h5>
+          <h5 class="card-title mx-auto">EDIT PLAYER REGISTRATION</h5>
             <div class="card-body">
               <form class="form" method="POST" action="{% url 'player_registration' %}"> {% csrf_token %}
                 <div class="mb-3">
@@ -131,10 +131,12 @@
                       </select>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-primary justify-content-right">REGISTER</button>
+                  <button type="submit" class="btn btn-primary justify-content-right">SAVE CHANGES</button>
+
               </form>
             </div>
-          </div>      
+          </div>   
+             
       </div>
     </div>
   </div>

@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
     
 class Team(models.Model):
-    team_ID = models.IntegerField()
+    team_ID = models.BigAutoField(primary_key=True)
     team_Name = models.CharField(max_length=30)
     wins = models.IntegerField()
     losses = models.IntegerField()
-    team_Rank = models.IntegerField()
+    team_Rank = models.IntegerField(blank=True, null=True)
     objects = models.Manager()
 
     def getTeam_ID(self):
@@ -30,7 +30,7 @@ class Team(models.Model):
     
 class Moderator(models.Model):
     moderator_username=models.CharField(max_length=20,primary_key=True)
-    moderator_password=models.CharField
+    moderator_password=models.CharField(max_length=20)
     objects = models.Manager()
 
     def getModeratorUsername(self):
@@ -43,18 +43,18 @@ class Moderator(models.Model):
         return self.moderator_username
     
 class Player(models.Model):
-    player_ID=models.AutoField(primary_key=True)
-    player_in_game_name=models.CharField(max_length=20, blank=True, null=True)
-    player_fname=models.CharField(max_length=20, blank=True, null=True)
-    player_lname=models.CharField(max_length=20, blank=True, null=True)
-    player_dc_id=models.CharField(max_length=15, blank=True, null=True)
-    player_fc=models.CharField(max_length=14, blank=True, null=True)
-    player_rank=models.CharField(max_length=5, blank=True, null=True)
-    player_role=models.CharField(max_length=10, blank=True, null=True)
-    player_type=models.CharField(max_length=10, default="member", null=True)
-    player_checkin_status=models.CharField(max_length=20, blank=True, null=True)
+    player_ID=models.BigAutoField(primary_key=True)
+    player_in_game_name=models.CharField(max_length=20)
+    player_fname=models.CharField(max_length=20)
+    player_lname=models.CharField(max_length=20)
+    player_dc_id=models.CharField(max_length=15)
+    player_fc=models.CharField(max_length=14)
+    player_rank=models.CharField(max_length=5)
+    player_role=models.CharField(max_length=10)
+    player_type=models.CharField(max_length=10, default="member")
+    player_checkin_status=models.CharField(max_length=20)
     objects = models.Manager()
-    Team_ID = models.ForeignKey(Team, blank=True, null=True, on_delete=models.CASCADE)    
+    Team_ID = models.ForeignKey(Team, on_delete=models.CASCADE)    
 
 
     def getPlayer_ID(self):
@@ -126,7 +126,7 @@ class Tournament(models.Model):
 
 class Bracket(models.Model):
     tournament_title = models.ForeignKey(Tournament, on_delete=models.CASCADE)
-    bracket_ID = models.IntegerField()
+    bracket_ID = models.BigAutoField(primary_key=True)
     bracket_Name = models.CharField(max_length=20)
     objects = models.Manager()
 
@@ -141,7 +141,7 @@ class Bracket(models.Model):
 
 class BracketColumn(models.Model):
     bracket_ID = models.ForeignKey(Bracket, on_delete=models.CASCADE)
-    bracketColumn_ID = models.IntegerField()
+    bracketColumn_ID = models.BigAutoField(primary_key=True)
     bracketColumn_Name = models.CharField(max_length=20)
     bracketColumn_Limit = models.IntegerField()
     objects = models.Manager()
@@ -157,7 +157,7 @@ class BracketColumn(models.Model):
 
 class Pairing(models.Model):
     bracketColumn_ID = models.ForeignKey(BracketColumn, on_delete=models.CASCADE)
-    pairing_ID = models.IntegerField()
+    pairing_ID = models.BigAutoField(primary_key=True)
     pairing_Name = models.CharField(max_length=20)
     pairing_Status = models.CharField(max_length=11)
     objects = models.Manager()
@@ -185,7 +185,7 @@ class GameEntry(models.Model):
         return self.game_Result
     
 class Schedule(models.Model):
-    schedule_ID = models.IntegerField()
+    schedule_ID = models.BigAutoField(primary_key=True)
     time_Start = models.TimeField()
     time_End = models.TimeField()
     objects = models.Manager()
