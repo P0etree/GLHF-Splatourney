@@ -99,6 +99,10 @@ def team_registration(request):
         p6_role=request.POST.get("p6role")
         p6_type=request.POST.get("p6type")
         Player.objects.create(Team_ID=team, player_fname=p6_fname, player_lname=p6_lname, player_in_game_name=p6_in_game_name, player_dc_id=p6_dc_id, player_fc=p6_fc, player_rank=p6_rank, player_role=p6_role, player_type=p6_type)
+        
+        Player_objects = Player.objects.all()
+        return render(request, 'SplatourneyApp/registrations.html', {'Player': Player_objects})
+    
     else:
         return render(request, 'SplatourneyApp/team_registration.html')
     
