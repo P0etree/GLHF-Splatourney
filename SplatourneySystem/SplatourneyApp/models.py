@@ -54,7 +54,7 @@ class Player(models.Model):
     player_type=models.CharField(max_length=10, default="member")
     player_checkin_status=models.CharField(max_length=20)
     objects = models.Manager()
-    Team_ID = models.ForeignKey(Team, on_delete=models.CASCADE)    
+    Team_ID = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True, null=True)    
 
 
     def getPlayer_ID(self):
@@ -125,7 +125,7 @@ class Tournament(models.Model):
         return self.tournament_title
 
 class Bracket(models.Model):
-    tournament_title = models.ForeignKey(Tournament, on_delete=models.CASCADE)
+    tournament_title = models.ForeignKey(Tournament, on_delete=models.CASCADE, blank=True, null=True)
     bracket_ID = models.BigAutoField(primary_key=True)
     bracket_Name = models.CharField(max_length=20)
     objects = models.Manager()
@@ -172,17 +172,31 @@ class Pairing(models.Model):
         return self.pairing_ID + ": " + self.pairing_Name
 
 class GameEntry(models.Model):
-    team_ID = models.ForeignKey(Team, on_delete=models.CASCADE)
+    team_ID = models.ForeignKey(Team, on_delete=models.CASCADE, blank=True, null=True)
     pairing_ID = models.ForeignKey(Pairing, on_delete=models.CASCADE)
+    gameEntry_Name = models.CharField(max_length=20)
+    next_GameEntry = models.CharField(max_length=20, blank=True, null=True)
     team_Check_in_Status = models.CharField(max_length=11)
     game_Result = models.CharField(max_length=4)
     objects = models.Manager()
 
-    def getTeam_Check_in_Status(self):
+    def getTeam_ID(self):
+        return self.team_ID
+    
+    def getPairing_ID(self):
         return self.pairing_ID
+
+    def getTeam_Check_in_Status(self):
+        return self.team_Check_in_Status
 
     def getGame_Result(self):
         return self.game_Result
+    
+    def getNext_GameEntry(self):
+        return self.next_GameEntry
+    
+    def __str__(self):
+        return self.gameEntry_Name
     
 class Schedule(models.Model):
     schedule_ID = models.BigAutoField(primary_key=True)

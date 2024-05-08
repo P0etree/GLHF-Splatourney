@@ -268,18 +268,19 @@
 </head>
     
   <body>
-    <p class="r1-text">ROUND 1</p>
+
+    <p class="r1-text"> {{bracketColumn1.getBracketColumn_Name}}</p>
     <!-- ROUND 1 -->
     <div class="round">
       <!-- each pairing -->
       <div class="bracket-game-wrapper">
         <div class="gameslot">
-          <div class="number">1</div>
+          <div class="number"> {{pairing1.getPairing_Name}} </div>
         </div>
         <div class="bracket-game">
-          <div class="team top win">Snute</div>
+          <div class="team top win"> {{gameEntry1.getTeam_ID.getTeam_Name}} </div>
           <div class="horizontal-line"></div>
-          <div class="team loss">TLO</div>
+          <div class="team bot win"> {{gameEntry2.getTeam_ID.getTeam_Name}} </div>
         </div>
       </div>
       <!-- end of pairing 1 -->
@@ -287,12 +288,13 @@
       <div class="space"></div>
       <div class="bracket-game-wrapper">
         <div class="gameslot">
-          <div class="number">2</div>
+
+          <div class="number"> {{pairing2.getPairing_Name}} </div>
         </div>
         <div class="bracket-game">
-          <div class="team top loss">ToD</div>
+          <div class="team top win"> {{gameEntry3.getTeam_ID.getTeam_Name}} </div>
           <div class="horizontal-line"></div>
-          <div class="team bot win">MC</div>
+          <div class="team bot win"> {{gameEntry4.getTeam_ID.getTeam_Name}} </div>
         </div>
       </div>
       <!-- end of pairing 2 -->
@@ -300,12 +302,12 @@
       <div class="space"></div>
       <div class="bracket-game-wrapper">
         <div class="gameslot">
-          <div class="number">3</div>
+          <div class="number"> {{pairing3.getPairing_Name}} </div>
         </div>
         <div class="bracket-game">
-          <div class="team top loss">Snute</div>
+          <div class="team top win"> {{gameEntry5.getTeam_ID.getTeam_Name}} </div>
           <div class="horizontal-line"></div>
-          <div class="team bot win">TLO</div>
+          <div class="team bot win"> {{gameEntry6.getTeam_ID.getTeam_Name}} </div>
         </div>
       </div>
       <!-- end of pairing 3 -->
@@ -313,12 +315,12 @@
       <div class="space"></div>
       <div class="bracket-game-wrapper">
         <div class="gameslot">
-          <div class="number">4</div>
+          <div class="number"> {{pairing4.getPairing_Name}} </div>
         </div>
         <div class="bracket-game">
-          <div class="team top loss">ToD</div>
+          <div class="team top win"> {{gameEntry7.getTeam_ID.getTeam_Name}} </div>
           <div class="horizontal-line"></div>
-          <div class="team bot win">MC</div>
+          <div class="team bot win"> {{gameEntry8.getTeam_ID.getTeam_Name}} </div>
         </div>
       </div>
       <!-- end of pairing 4 -->
@@ -347,17 +349,17 @@
   <div class="clear"></div>
 </div>
 <!-- SEMIFINALS -->
-<p class="r2-text">SEMI-FINALS</p>
+<p class="r2-text">{{bracketColumn2.getBracketColumn_Name}}</p>
 <div class="round r-of-2">
   <!-- pairing 2.1 -->
   <div class="bracket-game-wrapper">
     <div class="gameslot">
-      <div class="number">5</div>
+      <div class="number"> {{pairing5.getPairing_Name}} </div>
     </div>
     <div class="bracket-game">
-      <div class="team top loss">Snute</div>
+      <div class="team top win"> {{gameEntry9.getTeam_ID.getTeam_Name}} </div>
       <div class="horizontal-line"></div>
-      <div class="team bot win">MC</div>
+      <div class="team bot win"> {{gameEntry10.getTeam_ID.getTeam_Name}} </div>
     </div>
   </div>
   <!-- end of pairing 2.1 -->
@@ -365,12 +367,12 @@
   <div class="space r2"></div>
   <div class="bracket-game-wrapper">
     <div class="gameslot">
-      <div class="number">6</div>
+      <div class="number"> {{pairing6.getPairing_Name}} </div>
     </div>
     <div class="bracket-game">
-      <div class="team top loss">Snute</div>
+      <div class="team top win"> {{gameEntry11.getTeam_ID.getTeam_Name}} </div>
       <div class="horizontal-line"></div>
-      <div class="team bot win">MC</div>
+      <div class="team bot win"> {{gameEntry12.getTeam_ID.getTeam_Name}} </div>
     </div>
   </div>
   <!-- end of pairing 2.2  -->
@@ -389,17 +391,18 @@
 </div>
 
 <!-- FINALS -->
-<p class="r3-text">FINALS</p>
+
+<p class="r3-text">{{bracketColumn3.getBracketColumn_Name}}</p>
 <div class="round r-of-3">
   <!-- pairing 3 -->
   <div class="bracket-game-wrapper">
     <div class="gameslot">
-      <div class="number">7</div>
+      <div class="number"> {{pairing7.getPairing_Name}} </div>
     </div>
     <div class="bracket-game">
-      <div class="team top loss">Snute</div>
+      <div class="team top win"> {{gameEntry13.getTeam_ID.getTeam_Name}} </div>
       <div class="horizontal-line"></div>
-      <div class="team bot win">MC</div>
+      <div class="team bot win"> {{gameEntry14.getTeam_ID.getTeam_Name}} </div>
     </div>
   </div>
 </div>

@@ -138,19 +138,63 @@ def edit_tournament(request, pk):
         return render ()
 
 def pairings(request):
-    pairing_objects = Pairing.objects.all()
-    return render(request, '#', {'pairing': pairing_objects} )
+    gameEntry_objects = GameEntry.objects.all()
+    return render(request, '#', {'gameEntry_objects': gameEntry_objects} )
 
-def declare_winner(request):
-    if request.method=='POST':
-        winner = 'winner'
-        Team.objects.filter(team_Name=winner).update(wins=+1)
-    return render ('pairing_screens')
+def declare_winner(request, pk):
+    winning_team = GameEntry.objects.get(gameEntry_Name=pk)
+    winning_team_name = winning_team.getTeam_ID()
+    next_pairing = winning_team.getNext_GameEntry()
+    GameEntry.objects.filter(gameEntry_Name=next_pairing).update(team_ID=winning_team_name)
+    Team.objects.filter(team_Name=winning_team_name).update(wins =+ 1)
+    return redirect ('view_bracket')
 
 def start_tournament(request):
     #t = pk something something
     Tournament.objects.filter(pk='t').update(registration_status='Closed', tournament_status='ongoing')
     return redirect('tournament_details')
+
+def create_bracket_proto(request):
+    Bracket.objects.all().delete()
+    BracketColumn.objects.all().delete()
+    Team.objects.all().delete()
+    GameEntry.objects.all().delete()
+
+    bracket = Bracket.objects.create(bracket_Name='Bracket 1')
+    bracketColumn1 = BracketColumn.objects.create(bracketColumn_Name='Round 1', bracket_ID=bracket, bracketColumn_Limit=4)
+    bracketColumn2 = BracketColumn.objects.create(bracketColumn_Name='Round 2', bracket_ID=bracket, bracketColumn_Limit=2)
+    bracketColumn3 = BracketColumn.objects.create(bracketColumn_Name='Round 3', bracket_ID=bracket, bracketColumn_Limit=1)
+    pairing1 = Pairing.objects.create(pairing_Name='1', bracketColumn_ID=bracketColumn1, pairing_Status='Not Started')
+    pairing2 = Pairing.objects.create(pairing_Name='2', bracketColumn_ID=bracketColumn1, pairing_Status='Not Started')
+    pairing3 = Pairing.objects.create(pairing_Name='3', bracketColumn_ID=bracketColumn1, pairing_Status='Not Started')
+    pairing4 = Pairing.objects.create(pairing_Name='4', bracketColumn_ID=bracketColumn1, pairing_Status='Not Started')
+    pairing5 = Pairing.objects.create(pairing_Name='5', bracketColumn_ID=bracketColumn2, pairing_Status='Not Started')
+    pairing6 = Pairing.objects.create(pairing_Name='6', bracketColumn_ID=bracketColumn2, pairing_Status='Not Started')
+    pairing7 = Pairing.objects.create(pairing_Name='7', bracketColumn_ID=bracketColumn3, pairing_Status='Not Started')
+    team1 = Team.objects.create(team_Name='team1', wins=0, losses=0, team_Rank=8)
+    team2 = Team.objects.create(team_Name='team2', wins=0, losses=0, team_Rank=8)
+    team3 = Team.objects.create(team_Name='team3', wins=0, losses=0, team_Rank=8)
+    team4 = Team.objects.create(team_Name='team4', wins=0, losses=0, team_Rank=8)
+    team5 = Team.objects.create(team_Name='team5', wins=0, losses=0, team_Rank=8)
+    team6 = Team.objects.create(team_Name='team6', wins=0, losses=0, team_Rank=8)
+    team7 = Team.objects.create(team_Name='team7', wins=0, losses=0, team_Rank=8)
+    team8 = Team.objects.create(team_Name='team8', wins=0, losses=0, team_Rank=8)
+    gameEntry1 = GameEntry.objects.create(gameEntry_Name='gameEntry1', next_GameEntry='gameEntry9', pairing_ID=pairing1, team_ID=team1, team_Check_in_Status="NotCheckedIn")
+    gameEntry2 = GameEntry.objects.create(gameEntry_Name='gameEntry2', next_GameEntry='gameEntry9', pairing_ID=pairing1, team_ID=team2, team_Check_in_Status="NotCheckedIn")
+    gameEntry3 = GameEntry.objects.create(gameEntry_Name='gameEntry3', next_GameEntry='gameEntry10', pairing_ID=pairing2, team_ID=team3, team_Check_in_Status="NotCheckedIn")
+    gameEntry4 = GameEntry.objects.create(gameEntry_Name='gameEntry4', next_GameEntry='gameEntry10', pairing_ID=pairing2, team_ID=team4, team_Check_in_Status="NotCheckedIn")
+    gameEntry5 = GameEntry.objects.create(gameEntry_Name='gameEntry5', next_GameEntry='gameEntry11', pairing_ID=pairing3, team_ID=team5, team_Check_in_Status="NotCheckedIn")
+    gameEntry6 = GameEntry.objects.create(gameEntry_Name='gameEntry6', next_GameEntry='gameEntry11', pairing_ID=pairing3, team_ID=team6, team_Check_in_Status="NotCheckedIn")
+    gameEntry7 = GameEntry.objects.create(gameEntry_Name='gameEntry7', next_GameEntry='gameEntry12', pairing_ID=pairing4, team_ID=team7, team_Check_in_Status="NotCheckedIn")
+    gameEntry8 = GameEntry.objects.create(gameEntry_Name='gameEntry8', next_GameEntry='gameEntry12', pairing_ID=pairing4, team_ID=team8, team_Check_in_Status="NotCheckedIn")
+    gameEntry9 = GameEntry.objects.create(gameEntry_Name='gameEntry9', next_GameEntry='gameEntry13', pairing_ID=pairing5,  team_Check_in_Status="NotCheckedIn")
+    gameEntry10 = GameEntry.objects.create(gameEntry_Name='gameEntry10', next_GameEntry='gameEntry13', pairing_ID=pairing5, team_Check_in_Status="NotCheckedIn")
+    gameEntry11 = GameEntry.objects.create(gameEntry_Name='gameEntry11', next_GameEntry='gameEntry14', pairing_ID=pairing6, team_Check_in_Status="NotCheckedIn")
+    gameEntry12 = GameEntry.objects.create(gameEntry_Name='gameEntry12', next_GameEntry='gameEntry14', pairing_ID=pairing6, team_Check_in_Status="NotCheckedIn")
+    gameEntry13 = GameEntry.objects.create(gameEntry_Name='gameEntry13', pairing_ID=pairing7, team_Check_in_Status="NotCheckedIn")
+    gameEntry14 = GameEntry.objects.create(gameEntry_Name='gameEntry14', pairing_ID=pairing7, team_Check_in_Status="NotCheckedIn")
+
+    return render(request,'SplatourneyApp/create_bracket.html', {'bracketColumn1': bracketColumn1, 'bracketColumn2': bracketColumn2, 'bracketColumn3': bracketColumn3, 'pairing1': pairing1, 'pairing2': pairing2, 'pairing3': pairing3, 'pairing4': pairing4, 'pairing5': pairing5, 'pairing6': pairing6, 'pairing7': pairing7, 'gameEntry1': gameEntry1, 'gameEntry2': gameEntry2, 'gameEntry2': gameEntry2, 'gameEntry3': gameEntry3, 'gameEntry4': gameEntry4, 'gameEntry5': gameEntry5, 'gameEntry6': gameEntry6, 'gameEntry7': gameEntry7, 'gameEntry8': gameEntry8, 'gameEntry9':gameEntry9, 'gameEntry10':gameEntry10, 'gameEntry11':gameEntry11, 'gameEntry12':gameEntry12, 'gameEntry13':gameEntry13, 'gameEntry14':gameEntry14})
 
 def create_bracket(request):                                                                                            #Function to create bracket
     Bracket.objects.create()                                                                                            
@@ -183,13 +227,8 @@ def create_starting_entries(request):                                           
         GameEntry.objects.create(pairing_ID=x)
     entries= GameEntry.objects.all()
     for y in teams:
-        GameEntry.objects.create(pairing_ID=y)
-        GameEntry.objects.create(pairing_ID=y)
-
+        GameEntry.objects.filter()
     return
-        
-def create_tournament(request):
-     return render(request, 'SplatourneyApp/create_tournament.html')
     
 def pairing_screens(request):
     return render(request, 'SplatourneyApp/pairing_screens.html')
@@ -227,9 +266,42 @@ def edit_team_registration(request):
 def create_moderator(request):
     return render(request,'SplatourneyApp/create_moderator.html')
 
-def testBrackets(request):
-    return render(request, 'SplatourneyApp/create_bracket.html')
+def view_bracket(request):
+    bracket = Bracket.objects.get(bracket_Name='Bracket 1')
+    bracketColumn1 = BracketColumn.objects.get(bracketColumn_Name='Round 1')
+    bracketColumn2 = BracketColumn.objects.get(bracketColumn_Name='Round 2')
+    bracketColumn3 = BracketColumn.objects.get(bracketColumn_Name='Round 3')
+    pairing1 = Pairing.objects.get(pairing_Name='1')
+    pairing2 = Pairing.objects.get(pairing_Name='2')
+    pairing3 = Pairing.objects.get(pairing_Name='3')
+    pairing4 = Pairing.objects.get(pairing_Name='4')
+    pairing5 = Pairing.objects.get(pairing_Name='5')
+    pairing6 = Pairing.objects.get(pairing_Name='6')
+    pairing7 = Pairing.objects.get(pairing_Name='7')
+    team1 = Team.objects.get(team_Name='team1')
+    team2 = Team.objects.get(team_Name='team2')
+    team3 = Team.objects.get(team_Name='team3')
+    team4 = Team.objects.get(team_Name='team4')
+    team5 = Team.objects.get(team_Name='team5')
+    team6 = Team.objects.get(team_Name='team6')
+    team7 = Team.objects.get(team_Name='team7')
+    team8 = Team.objects.get(team_Name='team8')
+    gameEntry1 = GameEntry.objects.get(gameEntry_Name='gameEntry1')
+    gameEntry2 = GameEntry.objects.get(gameEntry_Name='gameEntry2')
+    gameEntry3 = GameEntry.objects.get(gameEntry_Name='gameEntry3')
+    gameEntry4 = GameEntry.objects.get(gameEntry_Name='gameEntry4')
+    gameEntry5 = GameEntry.objects.get(gameEntry_Name='gameEntry5')
+    gameEntry6 = GameEntry.objects.get(gameEntry_Name='gameEntry6')
+    gameEntry7 = GameEntry.objects.get(gameEntry_Name='gameEntry7')
+    gameEntry8 = GameEntry.objects.get(gameEntry_Name='gameEntry8')
+    gameEntry9 = GameEntry.objects.get(gameEntry_Name='gameEntry9')
+    gameEntry10 = GameEntry.objects.get(gameEntry_Name='gameEntry10')
+    gameEntry11 = GameEntry.objects.get(gameEntry_Name='gameEntry11')
+    gameEntry12 = GameEntry.objects.get(gameEntry_Name='gameEntry12')
+    gameEntry13 = GameEntry.objects.get(gameEntry_Name='gameEntry13')
+    gameEntry14 = GameEntry.objects.get(gameEntry_Name='gameEntry14')
+
+    return render(request,'SplatourneyApp/create_bracket.html', {'bracketColumn1': bracketColumn1, 'bracketColumn2': bracketColumn2, 'bracketColumn3': bracketColumn3, 'pairing1': pairing1, 'pairing2': pairing2, 'pairing3': pairing3, 'pairing4': pairing4, 'pairing5': pairing5, 'pairing6': pairing6, 'pairing7': pairing7, 'gameEntry1': gameEntry1, 'gameEntry2': gameEntry2, 'gameEntry2': gameEntry2, 'gameEntry3': gameEntry3, 'gameEntry4': gameEntry4, 'gameEntry5': gameEntry5, 'gameEntry6': gameEntry6, 'gameEntry7': gameEntry7, 'gameEntry8': gameEntry8, 'gameEntry9':gameEntry9, 'gameEntry10':gameEntry10, 'gameEntry11':gameEntry11, 'gameEntry12':gameEntry12, 'gameEntry13':gameEntry13, 'gameEntry14':gameEntry14})
 
 def manage_moderators(request):
     return render(request,'SplatourneyApp/manage_moderators.html')
-

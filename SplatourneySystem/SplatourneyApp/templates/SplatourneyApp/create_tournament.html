@@ -96,7 +96,7 @@
       <div class="container">
         <div class="card mx-auto">
             <div class="card-body">
-              <form class="form">
+              <form class="form" method="POST" action="{% url 'create_tournament' %}"> {% csrf_token %}
                 <div class="mb-3">
                   <label for="tournament_title" class="form-label">TITLE</label>
                   <input type="text" class="form-control" id="tournament_title" placeholder="Enter tournament title">
