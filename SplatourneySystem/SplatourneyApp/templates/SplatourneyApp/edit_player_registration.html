@@ -55,32 +55,32 @@
         <div class="card mx-auto">
           <h5 class="card-title mx-auto">EDIT PLAYER REGISTRATION</h5>
             <div class="card-body">
-              <form class="form" method="POST" action="{% url 'player_registration' %}"> {% csrf_token %}
+              <form class="form" method="POST" action="{% url 'update_player_registration' player_ID=a.player_ID %}"> {% csrf_token %}
                 <div class="mb-3">
                   <label for="PlayerFirstName" class="form-label">FIRST NAME</label>
-                  <input type="text" class="form-control" id="FirstNameInput" name="p1fname" placeholder="Enter First name">
+                  <input type="text" class="form-control" id="FirstNameInput" name="p1fname" value="{{a.player_fname}}">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerLastName" class="form-label">LAST NAME</label>
-                  <input type="text" class="form-control" id="LastNameInput" name="p1lname" placeholder="Enter Last name">
+                  <input type="text" class="form-control" id="LastNameInput" name="p1lname" value="{{a.player_lname}}">
                 </div>
                 <div class="mb-3">
                   <label for="ign" class="form-label">IGN</label>
-                  <input type="text" class="form-control" id="ignInput" name="p1ign" placeholder="Enter in-game name">
+                  <input type="text" class="form-control" id="ignInput" name="p1ign" value="{{a.player_in_game_name}}">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerDiscordID" class="form-label"> Discord ID</label>
-                  <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p1dc" placeholder="Enter Discord ID">
+                  <input type="text" class="form-control" id="PlayerDiscordIDInput" name="p1dc" value="{{a.player_dc_id}}">
                 </div>
                 <div class="mb-3">
                   <label for="PlayerFriendCode" class="form-label">Friend Code</label>
-                  <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p1fc" placeholder="Enter Friend Code">
+                  <input type="text" class="form-control" id="PlayerFriendCodeInput" name="p1fc" value="{{a.player_fc}}">
                 </div>
                 <div class="mb-3">
                   <label for="rank" class="form-label">CURRENT SPLATOON 3 RANK</label>
                 <div class="mb-3">
                   <select class="form-select" name="p1rank">
-                    <option selected>Select Rank</option>
+                    <option selected>{{a.player_rank}}</option>
                     <option value="1">C-</option>
                     <option value="2">C</option>
                     <option value="3">C+</option>
@@ -121,7 +121,7 @@
                       <label class="form-check-label" for="support"style="margin-left:50px">Support</label>-->
 
                       <select class="form-select" name="p1role">
-                        <option selected>Select Role</option>
+                        <option selected>{{a.player_role}}</option>
                         <option value="Front-line">Front-line</option>
                         <option value="Slayer">Slayer</option>
                         <option value="Mid-Line">Mid-Line</option>

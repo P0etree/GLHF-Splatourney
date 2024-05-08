@@ -42,6 +42,8 @@
                         <th class="table-dark" style="background-color: #008CC6" scope="col"> Check-in Status </th>
                         
                         <th class="table-dark" style="background-color: #008CC6" scope="col"> </th>
+                        <th class="table-dark" style="background-color: #008CC6" scope="col"> </th>
+                        
                     </tr>
                 </thead>
 
@@ -57,7 +59,15 @@
                                 <!--Buttons: Options-->
                                 <div class="row gy-2 gx-2 mb-2">
                                     <div class="col-auto">
-                                        <a href="{% url 'edit_player_registration' %}" class="btn btn-dark shadow-sm" style="background-color: #f93195; border-color: #f93195;"> EDIT </a>
+                                        <a href="{% url 'edit_player_registration' player_ID=p.getPlayer_ID  %}" class="btn btn-dark shadow-sm" style="background-color: #f93195; border-color: #f93195;"> EDIT </a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <!--Buttons: Options-->
+                                <div class="row gy-2 gx-2 mb-2">
+                                    <div class="col-auto">
+                                        <a href="{% url 'delete_player' player_ID=p.getPlayer_ID %}" class="btn btn-dark shadow-sm" style="background-color: red; border-color: red;"> DELETE </a>
                                     </div>
                                 </div>
                             </td>
@@ -73,41 +83,36 @@
             </div>
         </div>
         <!--Header for Each Team Registrations-->
-        <div class="table-responsive" style="max-height: 500px;">
-            <table class="table table-hover shadow-sm" style="background-color: #FFFFFF;">
-               
-                <thead>
-                    <tr>
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> Player Name </th>
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> IGN </th>
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> Rank </th>
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> Role/s </th>
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> Check-in Status </th>
-                        
-                        <th class="table-dark" style="background-color: #008CC6" scope="col"> </th>
-                    </tr>
-                </thead>
 
-                <tbody class="table-group-divider">
-                    {% for p in Player %}
-                        <tr>
-                                    <td> {{ p.getPlayerFullName }} </td>
-                                    <td> {{ p.getPlayer_in_game_name }} </td>
-                                    <td> {{ p.getPlayerRank }} </td>
-                                    <td> {{ p.getPlayerRole }} </td>
-                                    <td> <input type="checkbox" id="checkInStatus" name="checkInStatus" value="Checked-In"> </td>
-                            <td>
-                                <!--Buttons: Options-->
-                                <div class="row gy-2 gx-2 mb-2">
-                                    <div class="col-auto">
-                                        <a href="{% url 'edit_team_registration' %}" class="btn btn-dark shadow-sm" style="background-color: #f93195; border-color: #f93195;"> EDIT </a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+
+        
+        <table class="table table-hover shadow-sm" style="background-color: #FFFFFF;">
+           
+            <thead>
+                <tr>
+                    <th class="table-dark" style="background-color: #008CC6" scope="col"> Team Name </th>
+                    <th class="table-dark" style="background-color: #008CC6" scope="col"> Check-in Status </th>
+                    
+                    <th class="table-dark" style="background-color: #008CC6" scope="col"> </th>
+                </tr>
+            </thead>
+
+            <tbody class="table-group-divider">
+            {% for t in Team %} 
+                <tr>
+                    <td>{{t.getTeam_Name}}</td>
+                    <td> <input type="checkbox" id="checkInStatus" name="checkInStatus" value="Checked-In"> </td>
+                    <td>
+                        <!--Buttons: Options-->
+                        <div class="row gy-2 gx-2 mb-2">
+                            <div class="col-auto">
+                                <a href="{% url 'edit_team_registration' team_ID=t.team_ID %}" class="btn btn-dark shadow-sm" style="background-color: #f93195; border-color: #f93195;"> EDIT TEAM </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+           {% endfor %}
+        </table>
+       
     </body>
     {% endblock %}

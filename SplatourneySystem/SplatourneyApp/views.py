@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 
 
@@ -216,12 +216,13 @@ def create_team(request):
 def tournaments_screen(request):
     return render(request, 'SplatourneyApp/tournaments_screen.html')
 
-def edit_player_registration(request):
-    return render(request,'SplatourneyApp/edit_player_registration.html')
+def edit_player_registration(request,player_ID):
+    a = get_object_or_404(Player, player_ID=player_ID)
+    return render(request,'SplatourneyApp/edit_player_registration.html', {'a':a})
 
-
-def edit_team_registration(request):
-    return render(request,'SplatourneyApp/edit_team_registration.html')
+def edit_team_registration(request,team_ID):
+    team = get_object_or_404(Team, team_ID=team_ID)
+    return render(request,'SplatourneyApp/edit_team_registration.html', {'team':team})
 
 
 def create_moderator(request):
@@ -233,3 +234,102 @@ def testBrackets(request):
 def manage_moderators(request):
     return render(request,'SplatourneyApp/manage_moderators.html')
 
+
+def update_player_registration(request,player_ID):
+    if(request.method=="POST"):
+        p1_fname=request.POST.get("p1fname")
+        p1_lname=request.POST.get("p1lname")
+        p1_in_game_name=request.POST.get("p1ign")
+        p1_dc_id=request.POST.get("p1dc")
+        p1_fc=request.POST.get("p1fc")
+        p1_rank=request.POST.get("p1rank")
+        p1_role=request.POST.get("p1role")
+        Player.objects.filter(player_ID=player_ID).update(player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_role=p1_role, player_type='member')
+        return redirect('view_registrations')
+
+    else:
+        a=get_object_or_404(Player,player_ID=player_ID)
+        return render(request, 'SplatourneyApp/update_player_registration.html',{'a':a}) 
+    
+
+
+def update_team_registration(request,team_ID):
+    if (request.method=="POST"):
+        team_Name = request.POST.get('Team_Name')
+        team = Team.objects.update(team_Name=team_Name, wins=0, losses=0, team_Rank=8)
+        p1_fname=request.POST.get("p1fname")
+        p1_lname=request.POST.get("p1lname")
+        p1_in_game_name=request.POST.get("p1ign")
+        p1_dc_id=request.POST.get("p1dc")
+        p1_fc=request.POST.get("p1fc")
+        p1_rank=request.POST.get("p1rank")
+        p1_role=request.POST.get("p1role")
+        p1_type=request.POST.get("p1type")
+        Player.objects.update(Team_ID=team, player_fname=p1_fname, player_lname=p1_lname, player_in_game_name=p1_in_game_name, player_dc_id=p1_dc_id, player_fc=p1_fc, player_rank=p1_rank, player_role=p1_role, player_type=p1_type)
+        p2_fname=request.POST.get("p2fname")
+        p2_lname=request.POST.get("p2lname")
+        p2_in_game_name=request.POST.get("p2ign")
+        p2_dc_id=request.POST.get("p2dc")
+        p2_fc=request.POST.get("p2fc")
+        p2_rank=request.POST.get("p2rank")
+        p2_role=request.POST.get("p2role")
+        p2_type=request.POST.get("p2type")
+        Player.objects.update(Team_ID=team, player_fname=p2_fname, player_lname=p2_lname, player_in_game_name=p2_in_game_name, player_dc_id=p2_dc_id, player_fc=p2_fc, player_rank=p2_rank, player_role=p2_role, player_type=p2_type)
+        p3_fname=request.POST.get("p3fname")
+        p3_lname=request.POST.get("p3lname")
+        p3_in_game_name=request.POST.get("p3ign")
+        p3_dc_id=request.POST.get("p3dc")
+        p3_fc=request.POST.get("p3fc")
+        p3_rank=request.POST.get("p3rank")
+        p3_role=request.POST.get("p3role")
+        p3_type=request.POST.get("p3type")
+        Player.objects.update(Team_ID=team, player_fname=p3_fname, player_lname=p3_lname, player_in_game_name=p3_in_game_name, player_dc_id=p3_dc_id, player_fc=p3_fc, player_rank=p3_rank, player_role=p3_role, player_type=p3_type)
+        p4_fname=request.POST.get("p4fname")
+        p4_lname=request.POST.get("p4lname")
+        p4_in_game_name=request.POST.get("p4ign")
+        p4_dc_id=request.POST.get("p4dc")
+        p4_fc=request.POST.get("p4fc")
+        p4_rank=request.POST.get("p4rank")
+        p4_role=request.POST.get("p4role")
+        p4_type=request.POST.get("p4type")
+        Player.objects.update(Team_ID=team, player_fname=p4_fname, player_lname=p4_lname, player_in_game_name=p4_in_game_name, player_dc_id=p4_dc_id, player_fc=p4_fc, player_rank=p4_rank, player_role=p4_role, player_type=p4_type)
+        p5_fname=request.POST.get("p5fname")
+        p5_lname=request.POST.get("p5lname")
+        p5_in_game_name=request.POST.get("p5ign")
+        p5_dc_id=request.POST.get("p5dc")
+        p5_fc=request.POST.get("p5fc")
+        p5_rank=request.POST.get("p5rank")
+        p5_role=request.POST.get("p5role")
+        p5_type=request.POST.get("p5type")
+        Player.objects.update(Team_ID=team, player_fname=p5_fname, player_lname=p5_lname, player_in_game_name=p5_in_game_name, player_dc_id=p5_dc_id, player_fc=p5_fc, player_rank=p5_rank, player_role=p5_role, player_type=p5_type)
+        p6_fname=request.POST.get("p6fname")
+        p6_lname=request.POST.get("p6lname")
+        p6_in_game_name=request.POST.get("p6ign")
+        p6_dc_id=request.POST.get("p6dc")
+        p6_fc=request.POST.get("p6fc")
+        p6_rank=request.POST.get("p6rank")
+        p6_role=request.POST.get("p6role")
+        p6_type=request.POST.get("p6type")
+        Player.objects.update(Team_ID=team, player_fname=p6_fname, player_lname=p6_lname, player_in_game_name=p6_in_game_name, player_dc_id=p6_dc_id, player_fc=p6_fc, player_rank=p6_rank, player_role=p6_role, player_type=p6_type)
+        return redirect('view_registrations')
+    
+    else:
+        # Retrieve the Team object based on the given team_ID
+        team = get_object_or_404(Team, team_ID=team_ID)
+        # Retrieve all Player objects associated with the retrieved Team
+        players = Player.objects.filter(team=team)
+
+        # Pass both the Team object and the related Player objects to the template
+        return render(request, 'SplatourneyApp/update_team_registration.html', {'team': team, 'players': players})
+    
+
+def delete_player(request, player_ID):
+    Player.objects.filter(player_ID=player_ID).delete()
+    Player_objects = Player.objects.all()
+    Team_objects = Team.objects.all()
+    return render(request, 'SplatourneyApp/registrations.html', {'Player': Player_objects, 'Team': Team_objects})
+
+def delete_tournament(request, tournament_title):
+    Tournament.objects.filter(tournament_title=tournament_title).delete()
+    Tournament_objects = Tournament.objects.all()
+    return render(request, 'SplatourneyApp/registrations.html', {'Tournament': Tournament_objects })

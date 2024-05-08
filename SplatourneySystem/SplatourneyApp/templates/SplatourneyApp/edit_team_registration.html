@@ -102,16 +102,16 @@
     <div class="container min-vh-100 d-flex justify-content-center align-items-center width-300px padding-bottom-5px">
       <div class="card">
         <div class="card-body">
-          <form id="createTeam" method="POST" action="{% url 'team_registration' %}"> {% csrf_token %}
+          <form class="form" method="POST" action="{% url 'update_team_registration' team_ID=team.team_ID %}"> {% csrf_token %}
 
             <div class="mb-3">
               <h2 class="mb-3">TEAM NAME</h2>
-                  <input type="text" class="form-control" id="Team_Name" name="Team_Name" placeholder="Enter Team name">
+                  <input type="text" class="form-control" id="Team_Name" name="Team_Name" value="{{team.team_Name}}">
             </div>     
             <h2 class="mb-3 mt-5">PLAYER 1</h2>
             <div class="mb-3">
               <label for="p1fname" class="form-label">FIRST NAME</label>
-              <input type="text" class="form-control" id="p1fname" name="p1fname" placeholder="Enter First Name">
+              <input type="text" class="form-control" id="p1fname" name="p1fname"   placeholder="Enter Last Name">
             </div>
             <div class="mb-3">
               <label for="p1lname" class="form-label">LAST NAME</label>

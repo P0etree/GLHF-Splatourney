@@ -42,8 +42,11 @@ urlpatterns = [
     path('testBrackets', views.testBrackets, name='test_bracket'),
     path('create_team/', views.create_team, name='create_team'),
     path('tournaments_screen/', views.tournaments_screen, name='tournaments_screen'),
-    path('edit_player_registration/', views.edit_player_registration, name='edit_player_registration'),
-    path('edit_team_registration/', views.edit_team_registration, name='edit_team_registration'),
+    path('edit_player_registration/<player_ID>', views.edit_player_registration, name='edit_player_registration'),
+    path('edit_team_registration/<team_ID>', views.edit_team_registration, name='edit_team_registration'),
     path('create_moderator/', views.create_moderator, name='create_moderator'),
     path('manage_moderators/', views.manage_moderators, name='manage_moderators'),
+    path('update_player_registration/<int:player_ID>/', views.update_player_registration, name='update_player_registration'),
+    path('update_team_registration/<int:team_ID>/', views.update_team_registration, name='update_team_registration'),
+    path('delete_player/<player_ID>/', views.delete_player, name='delete_player'),
 ]
