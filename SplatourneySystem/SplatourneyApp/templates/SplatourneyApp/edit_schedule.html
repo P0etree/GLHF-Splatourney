@@ -12,18 +12,13 @@
           background-color: transparent;
         }
         .card{
+          z-index: 5;
           background-color: #D9D9D9;
           width:800px;
-          padding-top: 60px;
-          padding-bottom: 40px;
-          padding-left: 40px;
-          padding-right: 40px;
+          padding: 60px 40px 60px;
           margin-left: 200px;
           margin-right: 200px;
-
         }
-
-
 
         .card-title{
           text-decoration:solid;
@@ -37,31 +32,36 @@
         }
 
         .horizontal-line{
+          z-index: 10;
           margin-top: -85px;
           height: 1px;
           background-color: black;
+          margin-top: 10px;
+          margin-bottom: 20px;
           width: 100%;
 
         }
 
         .form-control{
+          border: none;
           border-radius: 10px;
+          margin-top: -3px;
         }
         
 
         .form-select{
           border: none;
           border-radius: 5px;
-          padding: 10px 15px 10px;
-          margin-left: 15px;
+          padding: 6px 15px 6px;
+          margin-left: 12px;
           width: auto;
         }
 
-        .game-select {
+        .sched-format {
           display: flex;
           margin-top: 0px;
           flex-direction: column;  /* Aligns children (label and select) in a column */
-          align-items: flex-start;  /* Aligns items to the start of the flex container */
+          align-items: center;  /* Aligns items to the start of the flex container */
           width: 100%;  /* Takes full width to fit within its parent container */
         }
 
@@ -69,9 +69,10 @@
           color: white;
           background-color:#008CC6;
           border: none;
-          border-radius: 10px;
+        }
 
-
+        .btn-danger{
+          margin-top: 30px;
         }
 
     .contained {
@@ -99,6 +100,20 @@
         text-align: center;
         color:white;
     }
+
+    .btn-light{
+      color: white;
+      background-color: #464646;
+      border: none;
+    }
+
+    .new-btn{
+      align-self: flex-end;
+      margin-top: -36px;
+      margin-right: 70px;
+
+    }
+
     .current {
         background-color: #ef216c;
     }
@@ -124,6 +139,14 @@
       margin-bottom: 0px;
     }
 
+    .start-label{
+      margin-left: 40px;
+    }
+
+    .end-label{
+      margin-left: 46px;
+    }
+
 
 
     p {
@@ -146,11 +169,11 @@
       <div class="container">
         <div class="card mx-auto pt-2 ">
             <div class="card-body">
+              <!-- ROW 1 -->
               <form class="form">
-                <!-- ROW 1 -->
                 <!-- select game no. -->
-                <div class="mb-4 game-select">
-                  <label for="game" class="form-label ml-3">GAME</label>
+                <div class="mb-2 sched-format">
+                  <label for="game" class="ml-2">GAME</label>
                   <select class="form-select" id="game" name="game">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -163,35 +186,79 @@
                 </div>
                 <!---->
                 <!-- start time -->
-                <div class="mb-4 game-select">
-                  <div class="form-group">
-                    <label for="time-start">START</label>
-                    <input type="time" class="form-control ml-3" id="time-start" name="time-start">
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
+                    <label for="time-start" class="start-label">START</label>
+                    <input type="time" class="form-control" id="time-start" name="time-start">
                   </div>
                 </div>
                 <!---->
                 <!-- end time -->
-                <div class="mb-4 game-select">
-                  <div class="form-group">
-                    <label for="time-end">END</label>
-                    <input type="time" class="form-control ml-3" id="time-end" name="time-end">
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
+                    <label for="time-end" class="end-label">END</label>
+                    <input type="time" class="form-control" id="time-end" name="time-end">
                   </div>
                 </div>
-                <!-- delete button -->
-                <div class="mb-4 game-select">
-                  <div class="form-group">
+                <!-- DELETE BUTTON -->
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
                     <button type="button" class="btn btn-danger">DELETE</button>
                   </div>
                 </div>
               </form>
-              <div style="text-align: right;">
-                <button style="background-color:#ef216c" type="submit" class="btn btn-primary justify-content-right">SAVE</button>
-              </div>
+              <div class="horizontal-line"></div>
+              <!-- ROW 2 -->
+              <form class="form">
+                <!-- select game no. -->
+                <div class="mb-2 sched-format">
+                  <label for="game" class="ml-2">GAME</label>
+                  <select class="form-select" id="game" name="game">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                  </select>
+                </div>
+                <!---->
+                <!-- start time -->
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
+                    <label for="time-start" class="start-label">START</label>
+                    <input type="time" class="form-control" id="time-start" name="time-start">
+                  </div>
+                </div>
+                <!---->
+                <!-- end time -->
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
+                    <label for="time-end" class="end-label">END</label>
+                    <input type="time" class="form-control" id="time-end" name="time-end">
+                  </div>
+                </div>
+                <!-- DELETE BUTTON -->
+                <div class="mb-2 sched-format">
+                  <div class="mb-3">
+                    <button type="button" class="btn btn-danger">DELETE</button>
+                  </div>
+                </div>
+              </form>
+              <div class="horizontal-line"></div>
             </div>
-            <div class="horizontal-line"></div>
-            <!-- END OF ROW 1 -->
-          </div>   
-             
+            <!-- END OF ROW 2 -->
+              <!-- SAVE BUTTON -->
+              <div style="text-align: right;">
+                <button type="submit" class="btn btn-primary justify-content-right">SAVE</button>
+              </div>
+              <!-- "ADD NEW" BUTTON -->
+              <div class="new-btn">
+                <button type="submit" class="btn btn-light">ADD NEW</button>
+              </div>
+        </div>
+      </div>   
       </div>
     </div>
   </div>
