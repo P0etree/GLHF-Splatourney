@@ -98,33 +98,51 @@
       <div class="container">
         <div class="card mx-auto">
             <div class="card-body">
-              <form class="form">
+              <form class="form" method="POST" action="{% url 'create_team' %}"> {% csrf_token %}
                 <div class="mb-3">
                   <label for="teamname" class="form-label">TEAM NAME</label>
-                  <input type="text" class="form-control" id="teamname" placeholder="Enter Team name">
+                  <input type="text" class="form-control" id="teamname" name="teamname" placeholder="Enter Team name">
                 </div>
                 <div class="mb-3">
                   <label for = "p4rank" class="form-label">CAPTAIN</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="captain" name="captain">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                   <label for = "p4rank" class="form-label">CO-CAPTAIN</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="co-capatin" name="co-captain">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                 </div>
                 <div class="mb-3">
                   <label for = "p4rank" class="form-label">MEMBER 1</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="member1" name="member1">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                 <label for = "p4rank" class="form-label">MEMBER 2</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="member2" name="member2">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                 </div>
                 <div class="mb-3">
                   <label for = "p4rank" class="form-label">MEMBER 3  (optional)</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="member3" name="member3">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                 <label for = "p4rank" class="form-label">MEMBER 4 (optional)</label>
-                  <select class="form-select" id="p4rank" name="p4rank">
+                  <select class="form-select" id="member4" name="member4">
+                    {% for p in players %}
+                      <option class="dropdown-item" value="{{ p.getPlayer_in_game_name }}"> {{ p.getPlayer_in_game_name }} </option>
+                    {% endfor %}
                   </select>
                 </div>
 
