@@ -26,7 +26,7 @@ class Team(models.Model):
         return self.team_Rank
     
     def __str__(self):
-        return self.team_ID + ": " + self.team_Name
+        return self.team_Name
     
 class Moderator(models.Model):
     moderator_username=models.CharField(max_length=20,primary_key=True)

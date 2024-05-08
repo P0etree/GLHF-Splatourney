@@ -231,26 +231,29 @@ def create_starting_entries(request):                                           
     return
     
 def pairing_screens(request):
-    return render(request, 'SplatourneyApp/pairing_screens.html')
+    gameEntries = GameEntry.objects.all()
+    return render(request, 'SplatourneyApp/pairing_screens.html', {'gameEntries':gameEntries})
 
 def create_team(request):
     if request.method=="POST":
-        team_Name = 'team_Name'
-        captain = 'captain'
-        co_captain = 'co-captain'
-        member1 = 'member1'
-        member2 = 'member2'
-        member3 = 'member3'
-        member4 = 'member4'
-        Player.objects.filter(player_in_game_name=captain).update(team_ID=Team.objects.get(team_Name=team_Name).pk, player_type='captain')
-        Player.objects.filter(player_in_game_name=co_captain).update(team_ID=Team.objects.get(team_Name=team_Name).pk, player_type='co-captain')
-        Player.objects.filter(player_in_game_name=member1).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
-        Player.objects.filter(player_in_game_name=member2).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
-        Player.objects.filter(player_in_game_name=member3).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
-        Player.objects.filter(player_in_game_name=member4).update(team_ID=Team.objects.get(team_Name=team_Name).pk)
+        Team_Name = request.POST.get('teamname')
+        newteam = Team.objects.create(team_Name=Team_Name, wins=0, losses=0, team_Rank=8)
+        captain = request.POST.get('captain')
+        co_captain = request.POST.get('co-captain')
+        member1 = request.POST.get('member1')
+        member2 = request.POST.get('member2')
+        member3 = request.POST.get('member3')
+        member4 = request.POST.get('member4')
+        Player.objects.filter(player_in_game_name=captain).update(Team_ID=newteam, player_type='captain')
+        Player.objects.filter(player_in_game_name=co_captain).update(Team_ID=newteam, player_type='co-captain')
+        Player.objects.filter(player_in_game_name=member1).update(Team_ID=newteam)
+        Player.objects.filter(player_in_game_name=member2).update(Team_ID=newteam)
+        Player.objects.filter(player_in_game_name=member3).update(Team_ID=newteam)
+        Player.objects.filter(player_in_game_name=member4).update(Team_ID=newteam)
         return redirect('view_registrations')
     else:
-        return render(request, "SplatourneyApp/create_team.html")
+        players = Player.objects.all().exclude(Team_ID__isnull=False)
+        return render(request, "SplatourneyApp/create_team.html", {'players':players})
 
 def tournaments_screen(request):
     return render(request, 'SplatourneyApp/tournaments_screen.html')

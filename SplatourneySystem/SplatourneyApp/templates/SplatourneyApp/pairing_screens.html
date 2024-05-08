@@ -98,7 +98,7 @@
     }
   </style>
 
-  <div class="has-bg-img">
+  <!--<div class="has-bg-img">
     <div class="bg-img bg-cover" style="background-image: url('splatoon3-pattern-02-3840x2160-1.webp'); height:100%; width:100%;">
         <input type="text" class="search" id="SearchBar" placeholder="Search">
             <div style="padding-top:50px">
@@ -131,12 +131,38 @@
                         <td style="background-color:rgb(227, 227, 227); text-align:center"> <a href="#" class="btn btn-custom player">SWAP</a></td>
                       </tr>
                   </table>
-
-
-
-
-            </div>
-                
+            </div>-->
+    <div>
+            <div class="table-responsive" style="max-height: 500px;">
+              <table class="table table-hover shadow-sm" style="background-color: #FFFFFF;">
+                 
+                  <thead>
+                      <tr>
+                          <th class="table-dark" style="background-color: #008CC6" scope="col"> Team ID </th>
+                          <th class="table-dark" style="background-color: #008CC6" scope="col"> Pairing ID </th>
+                          
+                          <th class="table-dark" style="background-color: #008CC6" scope="col"> </th>
+                      </tr>
+                  </thead>
+  
+                  <tbody class="table-group-divider">
+                      {% for x in gameEntries %}
+                          <tr>
+                                      <td> {{ x.team_ID.team_Name }} </td>
+                                      <td> {{ x.pairing_ID.pairing_Name }} </td>
+                              <td>
+                                  <!--Buttons: Options-->
+                                  <div class="row gy-2 gx-2 mb-2">
+                                      <div class="col-auto">
+                                          <a href="{% url 'declare_winner' pk=x.gameEntry_Name %}" class="btn btn-dark shadow-sm" style="background-color: #f93195; border-color: #f93195;"> WINNER </a>
+                                      </div>
+                                  </div>
+                              </td>
+                          </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+          </div>
       
     
   </div>

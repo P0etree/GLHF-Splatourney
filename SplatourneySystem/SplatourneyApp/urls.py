@@ -46,4 +46,5 @@ urlpatterns = [
     path('edit_team_registration/', views.edit_team_registration, name='edit_team_registration'),
     path('create_moderator/', views.create_moderator, name='create_moderator'),
     path('manage_moderators/', views.manage_moderators, name='manage_moderators'),
+    path('declare_winner/<str:pk>', views.declare_winner, name='declare_winner')
 ]
